@@ -1,11 +1,11 @@
-package co.com.cmdb.generales.domain.proveedorDomain;
+package co.com.cmdb.generales.domain.proveedor;
 
 import java.util.UUID;
 
 import co.com.cmdb.generales.domain.Domain;
 import co.com.cmdb.generales.domain.tipoDocumento.TipoDocumentoDomain;
 
-public final class proveedorDomain extends Domain{
+public final class ProveedorDomain extends Domain{
 	
 	private String numeroDocumento;
 	private TipoDocumentoDomain tipoDocumento;
@@ -13,7 +13,7 @@ public final class proveedorDomain extends Domain{
 	private long telefono;
 	private boolean estado;
 
-	private proveedorDomain(final UUID identificador,final String numeroDocumento, final TipoDocumentoDomain tipoDocumento, 
+	private ProveedorDomain(final UUID identificador,final String numeroDocumento, final TipoDocumentoDomain tipoDocumento, 
 			  final String nombre, final long telefono, final boolean estado) {
 		super(identificador);
 		setNumeroDocumento(numeroDocumento);
