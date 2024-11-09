@@ -10,7 +10,7 @@ public class BooleanHelper {
 
 
     public static final boolean isNull(final Boolean valor) {
-        return ObjectHelper.getObjectHelper().isNull(valor);
+        return ObjectHelper.isNull(valor);
     }
 
     public static final boolean getDefaultValue(final Boolean valor) {

@@ -11,7 +11,7 @@ public class LongHelper {
     private static final long MAX_PHONE_NUMBER = 3999999999L;
 
 	public static final boolean isNull(final Long valor) {
-		return ObjectHelper.getObjectHelper().isNull(valor);
+		return ObjectHelper.isNull(valor);
 	}
 	
 	public static final Long getDefaultValue(final Long valor) {

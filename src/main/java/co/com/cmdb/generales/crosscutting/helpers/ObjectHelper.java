@@ -7,6 +7,12 @@ public class ObjectHelper {
 	private ObjectHelper() {
 		super();
 	}
+	
+	public static final ObjectHelper getObjectHelper() {
+		
+		return INSTANCE;
+		
+	}
 
 	public static <O> boolean isNull(final O object) {
 		return object == null;
@@ -16,10 +22,5 @@ public class ObjectHelper {
 		return isNull(object) ? defaultObject : object;
 	}
 	
-	public static final ObjectHelper getObjectHelper() {
-		
-		return INSTANCE;
-		
-	}
 
 }
