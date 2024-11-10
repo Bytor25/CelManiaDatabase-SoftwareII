@@ -1,13 +1,15 @@
 package co.com.cmdb.generales.crosscutting.helpers;
 
+import java.util.regex.Pattern;
 
 public final class TextHelper {
-
+    
     public static final String EMPTY = "";
     public static final String UNDERLINE = "_";
-    private static final String EMAIL_PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    private static final String DOCUMENT_NUMBER_PATTERN = "^[0-9]+$";
-    private static final String ESPACIOS_LETRAS_DIGITOS = "^[0-9A-Za-záéíóúÁÉÍÓÚ]+$";
+    
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    private static final Pattern DOCUMENT_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
+    private static final Pattern ESPACIOS_LETRAS_DIGITOS_PATTERN = Pattern.compile("^[0-9A-Za-záéíóúÁÉÍÓÚ]+$");
 
     private TextHelper() {}
 
@@ -59,11 +61,11 @@ public final class TextHelper {
     }
 
     public static boolean isValidEmailFormat(final String value) {
-        return getDefault(value).matches(EMAIL_PATTERN);
+        return EMAIL_PATTERN.matcher(getDefault(value)).matches();
     }
 
     public static boolean isOnlyNumbers(final String value) {
-        return getDefault(value).matches(DOCUMENT_NUMBER_PATTERN);
+        return DOCUMENT_NUMBER_PATTERN.matcher(getDefault(value)).matches();
     }
 
     public static boolean hasMinLength(final String value, final int minLength) {
@@ -75,6 +77,6 @@ public final class TextHelper {
     }
 
     public static boolean isAlphanumericWithSpaces(final String value) {
-        return getDefault(value).matches(ESPACIOS_LETRAS_DIGITOS);
+        return ESPACIOS_LETRAS_DIGITOS_PATTERN.matcher(getDefault(value)).matches();
     }
 }

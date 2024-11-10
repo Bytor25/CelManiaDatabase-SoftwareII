@@ -10,7 +10,7 @@ public class CmdbException extends RuntimeException {
 	private String userMessage;
 	private Layer layer;
 	
-	public CmdbException(final String technicalMessage, final String userMessage, final Layer layer, final Exception rootException) {
+	public CmdbException(final String userMessage, final String technicalMessage,  final Layer layer, final  Exception rootException) {
 		
 		super(ObjectHelper.getDefault(technicalMessage, TextHelper.applyTrim(userMessage)), ObjectHelper.getDefault(rootException, new Exception()));
 		
@@ -23,7 +23,7 @@ public class CmdbException extends RuntimeException {
 		return userMessage;
 	}
 
-	public void setUserMessage(String userMessage) {
+	private void setUserMessage(String userMessage) {
 		this.userMessage = TextHelper.applyTrim(userMessage);
 	}
 
@@ -31,13 +31,13 @@ public class CmdbException extends RuntimeException {
 		return layer;
 	}
 
-	public final void setLayer(Layer layer) {
+	private final void setLayer(Layer layer) {
 		this.layer = ObjectHelper.getDefault(layer, Layer.GENERAL);
 	}
 	
-	public static CmdbException create(final String technicalMessage, final String userMessage, final Exception rootException) {
+	public static CmdbException create( final String userMessage,final String technicalMessage, final Exception rootException) {
 		
-		return new CmdbException(technicalMessage, userMessage, Layer.GENERAL, rootException);
+		return new CmdbException(userMessage, technicalMessage, Layer.GENERAL, rootException);
 		
 	}
 
@@ -50,7 +50,7 @@ public class CmdbException extends RuntimeException {
 	
 	public static CmdbException create(final String techicalMessage, final String userMessage) {
 		
-		return new CmdbException(techicalMessage, userMessage, Layer.GENERAL, new Exception());
+		return new CmdbException( userMessage,techicalMessage, Layer.GENERAL, new Exception());
 		
 	}
 	

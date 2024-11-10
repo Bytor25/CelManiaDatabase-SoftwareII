@@ -15,12 +15,15 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Cliente")
-public final class ClienteEntity {
+public class ClienteEntity {
 	
 	@Id
 	@Column(name = "id")
 	private UUID id;
 	
+	@Column(name = "numeroDocumento")
+	private String numeroDocumento;
+
 	@ManyToOne
 	@JoinColumn(name = "TipoDocumento") 
 	private TipoDocumentoEntity tipoDocumento;
@@ -40,9 +43,10 @@ public final class ClienteEntity {
 	@Column(name = "estado")
 	private boolean estado;
 	
-	public ClienteEntity() {
+	ClienteEntity() {
 		
 		setId(UUIDHelper.getDefault());
+		setNumeroDocumento(TextHelper.EMPTY);
 		setTipoDocumento(TipoDocumentoEntity.create());
 		setName(TextHelper.EMPTY);
 		setApellido(TextHelper.EMPTY);
@@ -52,9 +56,10 @@ public final class ClienteEntity {
 		
 	}
 	
-	public ClienteEntity(final UUID id, final TipoDocumentoEntity tipoDocumento, final String name, final String apellido, final String correo, final Long telefono, final boolean estado) {
+	public ClienteEntity(final UUID id, final String numeroDocumento, final TipoDocumentoEntity tipoDocumento, final String name, final String apellido, final String correo, final Long telefono, final boolean estado) {
 		
 		setId(id);
+		setNumeroDocumento(numeroDocumento);
 		setTipoDocumento(tipoDocumento);
 		setName(name);
 		setApellido(apellido);
@@ -72,13 +77,13 @@ public final class ClienteEntity {
 	
 	public static final ClienteEntity create(final UUID id) {
 		
-		return new ClienteEntity(id, TipoDocumentoEntity.create(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, LongHelper.DEFAULT_LONG, BooleanHelper.DEFAULT_BOOLEAN);
+		return new ClienteEntity(id, TextHelper.EMPTY, TipoDocumentoEntity.create(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, LongHelper.DEFAULT_LONG, BooleanHelper.DEFAULT_BOOLEAN);
 		
 	}
 	
-	public static final ClienteEntity create(final UUID id, final TipoDocumentoEntity tipoDocumento, final String name, final String apellido, final String correo, final Long telefono, final Boolean estado) {
+	public static final ClienteEntity create(final UUID id, final String numeroDocumento, final TipoDocumentoEntity tipoDocumento, final String name, final String apellido, final String correo, final Long telefono, final Boolean estado) {
 		
-		return new ClienteEntity(id, tipoDocumento, name, apellido, correo, telefono, estado);
+		return new ClienteEntity(id,numeroDocumento, tipoDocumento, name, apellido, correo, telefono, estado);
 		
 		
 	}
@@ -93,6 +98,14 @@ public final class ClienteEntity {
 		this.id = UUIDHelper.getDefault();
 	}
 
+	public String getNumeroDocumento() {
+		return numeroDocumento;
+	}
+
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
+	}
+	
 	public TipoDocumentoEntity getTipoDocumento() {
 		return tipoDocumento;
 	}

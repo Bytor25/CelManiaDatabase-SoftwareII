@@ -10,25 +10,25 @@ public class RuleCmdbException extends CmdbException {
 		super(technicalMessage, userMessage, Layer.RULE, rootException);
 	}
 	
-	public static RuleCmdbException create(final String technicalMessage, final String userMessage, final Exception rootException) {
+	public static final RuleCmdbException create( final String userMessage,final String technicalMessage, final Exception rootException) {
 		
-		return new RuleCmdbException(technicalMessage, userMessage, rootException);
+		return new RuleCmdbException( userMessage,technicalMessage, rootException);
 		
 	}
 	
-	public static RuleCmdbException create(final String userMessage, final Exception rootException) {
+	public static final RuleCmdbException create(final String userMessage, final Exception rootException) {
 		
 		return new RuleCmdbException(userMessage, userMessage, rootException);
 		
 	}
 	
-	public static RuleCmdbException create(final String technicalMessage, final String userMessage) {
+	public static final RuleCmdbException create( final String userMessage,final String technicalMessage) {
 		
-		return new RuleCmdbException(technicalMessage, userMessage, new Exception());
+		return new RuleCmdbException( userMessage,technicalMessage, new Exception());
 		
 	}
 	
-	public static RuleCmdbException create(final String userMessage) {
+	public static final RuleCmdbException create(final String userMessage) {
 		
 		return new RuleCmdbException(userMessage, userMessage, new Exception());
 		

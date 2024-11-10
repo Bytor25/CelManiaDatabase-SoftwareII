@@ -2,6 +2,7 @@ package co.com.cmdb.generales.domain.cliente;
 
 import java.util.UUID;
 
+import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.Domain;
 import co.com.cmdb.generales.domain.tipoDocumento.TipoDocumentoDomain;
 
@@ -33,8 +34,8 @@ public final class ClienteDomain extends Domain {
 		return numeroDocumento;
 	}
 
-	private final void setNumeroDocumento(String numeroDocumento2) {
-		this.numeroDocumento = numeroDocumento2;
+	private final void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
 	}
 	
 	// Tipo Documento
