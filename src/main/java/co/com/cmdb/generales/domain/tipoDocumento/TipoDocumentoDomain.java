@@ -1,43 +1,36 @@
 package co.com.cmdb.generales.domain.tipoDocumento;
 
-public final class TipoDocumentoDomain {
+public class TipoDocumentoDomain {
 	
-	private int identificador;
+	private int id;
 	private String nombre;
 	
-	private TipoDocumentoDomain() {
-		super();
+	public TipoDocumentoDomain(final int id, final String nombre) {
+		
+		setId(id);
+		setNombre(nombre);
+
+	}
+	
+	public static final TipoDocumentoDomain create(final int id, final String nombre) {
+		
+		return new TipoDocumentoDomain(id, nombre);
 		
 	}
 	
-	private TipoDocumentoDomain(final int identificador, final String nombre) {
-	}
-	
-	public static TipoDocumentoDomain build(final int identificador, final String nombre) {
-		
-		return new TipoDocumentoDomain(identificador, nombre);
+	public int getId() {
+		return id;
 	}
 
-	// Identificador
-	
-	public final int getIdentificador() {
-		return identificador;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public final void setIdentificador(int identificador) {
-		this.identificador = identificador;
-	}
-
 	
-	// Nombre
-	public final String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	public final void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import co.com.cmdb.generales.application.secondaryports.entity.ClienteEntity;
 import co.com.cmdb.generales.crosscutting.exceptions.DataCmdbException;
-import co.com.cmdb.generales.crosscutting.helpers.BooleanHelper;
 import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
+import co.com.cmdb.generales.crosscutting.helpers.NumericHelper;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.crosscutting.helpers.UUIDHelper;
@@ -44,19 +44,20 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 					
 				}
 				
-				if(ObjectHelper.isNull(filter.getTipoDocumento()) && !UUIDHelper.isDefault(filter.getTipoDocumento().getId())) {
+				if(ObjectHelper.isNull(filter.getTipoDocumento()) && !NumericHelper.isNull(filter.getTipoDocumento().getId())) {
 					predicates.add(criteriaBuilder.equal(result.get("TipoDocumento"), filter.getTipoDocumento()));
 					
 				}
 				
-				if(!TextHelper.isNull(filter.getName())) {
-					predicates.add(criteriaBuilder.equal(result.get("Name"), filter.getName()));
+				if(!TextHelper.isNull(filter.getNombre())) {
+					predicates.add(criteriaBuilder.equal(result.get("Nombre"), filter.getNombre()));
 						
 				}
+		
 				
-				if(!TextHelper.isNull(filter.getApellido())) {
-					predicates.add(criteriaBuilder.equal(result.get("Apellido"), filter.getApellido()));
-						
+				if(!TextHelper.isNull(filter.getApellidos())) {
+					predicates.add(criteriaBuilder.equal(result.get("Apellidos"), filter.getApellidos()));
+					
 				}
 				
 				if(!TextHelper.isNull(filter.getCorreo())) {
@@ -64,22 +65,10 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 						
 				}
 				
-				if(!TextHelper.isNull(filter.getApellido())) {
-					predicates.add(criteriaBuilder.equal(result.get("Apellido"), filter.getApellido()));
-						
-				}
-				
 				if(!LongHelper.isNull(filter.getTelefono())) {
 					predicates.add(criteriaBuilder.equal(result.get("Telefono"), filter.getTelefono()));
 					
 				}
-				
-				if(!BooleanHelper.isNull(filter.isEstado())) {
-					predicates.add(criteriaBuilder.equal(result.get("Estado"), filter.getTelefono()));
-					
-				}
-				
-		
 				
 			}
 			

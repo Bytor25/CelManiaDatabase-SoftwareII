@@ -1,18 +1,34 @@
 package co.com.cmdb.generales.application.primaryports.dto;
 
-public final class ClienteDTO {
+import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
+import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
+import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
+
+public class ClienteDTO {
 	
-	private String numeroDocumento;
 	private TipoDocumentoDTO tipoDocumento;
+	private String numeroDocumento;
 	private String nombre;
 	private String apellidos;
 	private String correo;
 	private long telefono;
 	
-	public ClienteDTO(final String numeroDocumento, final TipoDocumentoDTO tipoDocumento, final String nombre, final String apellidos,
+	public ClienteDTO() {
+		
+		setTipoDocumento(TipoDocumentoDTO.create());
+		setNumeroDocumento(TextHelper.EMPTY);
+		setNombre(TextHelper.EMPTY);
+		setApellidos(TextHelper.EMPTY);
+		setCorreo(TextHelper.EMPTY);
+		setTelefono(LongHelper.DEFAULT_LONG);
+		
+	}
+	
+	public ClienteDTO(final TipoDocumentoDTO tipoDocumento, final String numeroDocumento , final String nombre, final String apellidos,
 			final String correo, final long telefono) {
-		setNumeroDocumento(numeroDocumento);
+		
 		setTipoDocumento(tipoDocumento);
+		setNumeroDocumento(numeroDocumento);
 		setNombre(nombre);
 		setApellidos(apellidos);
 		setCorreo(correo);
@@ -20,64 +36,65 @@ public final class ClienteDTO {
 		
 	}
 	
-	public static ClienteDTO create(final String numeroDocumento, final TipoDocumentoDTO tipoDocumento, final String nombre, final String apellidos,
+	public static final ClienteDTO create(final TipoDocumentoDTO tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos,
 			final String correo, final long telefono) {
-		return new ClienteDTO( numeroDocumento,  tipoDocumento,  nombre,  apellidos,
-				 correo,  telefono);
+		
+		return new ClienteDTO(tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono);
+		
 	}
-
-	public String getNumeroDocumento() {
-		return numeroDocumento;
-	}
-
-	private void setNumeroDocumento(String numeroDocumento) {
-		this.numeroDocumento = numeroDocumento;
+	
+	public static final ClienteDTO create() {
+		
+		return new ClienteDTO();
+		
 	}
 
 	public TipoDocumentoDTO getTipoDocumento() {
 		return tipoDocumento;
 	}
 
-	private void setTipoDocumento(TipoDocumentoDTO tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public void setTipoDocumento(TipoDocumentoDTO tipoDocumento) {
+		this.tipoDocumento = ObjectHelper.getDefault(tipoDocumento, TipoDocumentoDTO.create());
+	}
+	
+	public String getNumeroDocumento() {
+		return numeroDocumento;
+	}
+
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	private void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombre(String nombre) {
+		this.nombre = TextHelper.applyTrim(nombre);
 	}
 
 	public String getApellidos() {
 		return apellidos;
 	}
 
-	private void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+	public void setApellidos(String apellidos) {
+		this.apellidos = TextHelper.applyTrim(apellidos);
 	}
 
 	public String getCorreo() {
 		return correo;
 	}
 
-	private void setCorreo(String correo) {
-		this.correo = correo;
+	public void setCorreo(String correo) {
+		this.correo = TextHelper.applyTrim(correo);
 	}
 
 	public long getTelefono() {
 		return telefono;
 	}
 
-	private void setTelefono(long telefono) {
-		this.telefono = telefono;
+	public void setTelefono(long telefono) {
+		this.telefono = LongHelper.getDefaultValue(telefono);
 	}
 	
-	
-	
-	
-	
-	
-
 }

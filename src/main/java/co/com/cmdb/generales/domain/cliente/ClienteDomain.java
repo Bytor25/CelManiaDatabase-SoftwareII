@@ -2,50 +2,54 @@ package co.com.cmdb.generales.domain.cliente;
 
 import java.util.UUID;
 
-import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.Domain;
 import co.com.cmdb.generales.domain.tipoDocumento.TipoDocumentoDomain;
 
-public final class ClienteDomain extends Domain {
+public class ClienteDomain extends Domain {
 	
-	private String numeroDocumento;
 	private TipoDocumentoDomain tipoDocumento;
+	private String numeroDocumento;
 	private String nombre;
 	private String apellidos;
 	private String correo;
 	private long telefono;
-	private boolean estado;
 
-	private ClienteDomain(final UUID id, final String numeroDocumento, 
-			final TipoDocumentoDomain tipoDocumento, final String nombre, final String apellidos, final String correo,
-			  final long telefono, final boolean estado ) {
+	public ClienteDomain (final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo,final long telefono) {
+		
 		super(id);
-		setNumeroDocumento(numeroDocumento);
 		setTipoDocumento(tipoDocumento);
+		setNumeroDocumento(numeroDocumento);
 		setNombre(nombre);
 		setApellidos(apellidos);
 		setCorreo(correo);
 		setTelefono(telefono);
-		setEstado(estado);
+		
 	}
+	
+	public static final ClienteDomain create(final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono) {
+		
+		return new ClienteDomain(id, tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono);
 
-	// Numero Documento
-	public final String getNumeroDocumento() {
-		return numeroDocumento;
-	}
-
-	private final void setNumeroDocumento(String numeroDocumento) {
-		this.numeroDocumento = TextHelper.applyTrim(numeroDocumento);
 	}
 	
 	// Tipo Documento
 
-	public final TipoDocumentoDomain getTipoDocumento() {
-		return tipoDocumento;
+		public final TipoDocumentoDomain getTipoDocumento() {
+			return tipoDocumento;
+		}
+
+		public final void setTipoDocumento(TipoDocumentoDomain tipoDocumento) {
+			this.tipoDocumento = tipoDocumento;
+		}
+
+	// Numero Documento
+	
+	public final String getNumeroDocumento() {
+		return numeroDocumento;
 	}
 
-	private final void setTipoDocumento(TipoDocumentoDomain tipoDocumento) {
-		this.tipoDocumento = tipoDocumento;
+	public final void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
 	}
 	
 	// Nombre
@@ -54,7 +58,7 @@ public final class ClienteDomain extends Domain {
 		return nombre;
 	}
 
-	private final void setNombre(String nombre) {
+	public final void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
@@ -63,7 +67,7 @@ public final class ClienteDomain extends Domain {
 		return apellidos;
 	}
 
-	private final void setApellidos(String apellidos) {
+	public final void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 	
@@ -72,7 +76,7 @@ public final class ClienteDomain extends Domain {
 		return correo;
 	}
 
-	private final void setCorreo(String correo) {
+	public final void setCorreo(String correo) {
 		this.correo = correo;
 	}
 
@@ -81,18 +85,8 @@ public final class ClienteDomain extends Domain {
 		return telefono;
 	}
 
-	private final void setTelefono(long telefono) {
+	public final void setTelefono(long telefono) {
 		this.telefono = telefono;
-	}
-	
-	// Estado
-
-	public final boolean isEstado() {
-		return estado;
-	}
-
-	private final void setEstado(boolean estado) {
-		this.estado = estado;
 	}
 	
 }

@@ -1,9 +1,7 @@
 package co.com.cmdb.generales.application.secondaryports.entity;
 
-import java.util.UUID;
-
+import co.com.cmdb.generales.crosscutting.helpers.NumericHelper;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
-import co.com.cmdb.generales.crosscutting.helpers.UUIDHelper;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,23 +9,23 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TipoDocumento")
-public final class TipoDocumentoEntity {
+public class TipoDocumentoEntity {
 	
 	@Id
 	@Column(name = "id")
-	private UUID id;
+	private int id;
 	
 	@Column(name = "nombre")
 	private String name;
 	
 	public TipoDocumentoEntity() {
 		
-		setId(UUIDHelper.getDefault());
+		setId(NumericHelper.DEFAULT_INT);
 		setName(TextHelper.EMPTY);
 		
 	}
 	
-	public TipoDocumentoEntity(final UUID id, final String name) {
+	public TipoDocumentoEntity(final int id, final String name) {
 		
 		setId(id);
 		setName(name);
@@ -40,24 +38,24 @@ public final class TipoDocumentoEntity {
 		
 	}
 	
-	public static final TipoDocumentoEntity create(final UUID id) {
+	public static final TipoDocumentoEntity create(final int id) {
 		
 		return new TipoDocumentoEntity(id, TextHelper.EMPTY);
 		
 	}
 	
-	public static final TipoDocumentoEntity create(final UUID id, final String name) {
+	public static final TipoDocumentoEntity create(final int id, final String name) {
 		
 		return new TipoDocumentoEntity(id, name);
 				
 	}
 
-	public final UUID getId() {
+	public int getId() {
 		return id;
 	}
 
-	public final void setId(final UUID id) {
-		this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+	public void setId(final int id) {
+		this.id = NumericHelper.getDefaultValue(id);
 	}
 
 	public String getName() {
