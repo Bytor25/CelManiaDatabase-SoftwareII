@@ -33,7 +33,10 @@ public class RegistrarClienteImpl implements RegistrarCliente {
 	
 		var id = generarIdentificadorCliente();
 
-		var clienteEntity = ClienteEntity.create().setId(id).setTipoDocumento(TipoDocumentoEntityMapper.INSTANCE.toEntity(cliente.getTipoDocumento())).setNumeroDocumento(cliente.getNumeroDocumento()).setNombre(cliente.getNombre()).setApellidos(cliente.getApellidos()).setCorreo(cliente.getCorreo()).setTelefono(cliente.getTelefono());
+		var clienteEntity = ClienteEntity.create().setId(id).setTipoDocumento(TipoDocumentoEntityMapper.INSTANCE
+				.toEntity(cliente.getTipoDocumento())).setNumeroDocumento(cliente.getNumeroDocumento())
+				.setNombre(cliente.getNombre()).setApellidos(cliente.getApellidos())
+				.setCorreo(cliente.getCorreo()).setTelefono(cliente.getTelefono());
 		
 		clienteRepository.save(clienteEntity);
 				

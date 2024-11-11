@@ -45,7 +45,7 @@ public class ClienteController {
 		
 		try {
 			
-			registrarClienteInteractor.execute(cliente);  // Usar directamente 'city' sin sanitizar
+			registrarClienteInteractor.execute(cliente); 
 	        clienteResponse.getMensajes().add("Cliente creado de manera exitosa");
 			
 			
