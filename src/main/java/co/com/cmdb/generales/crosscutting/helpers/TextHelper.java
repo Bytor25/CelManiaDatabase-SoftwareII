@@ -10,6 +10,8 @@ public final class TextHelper {
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
     private static final Pattern DOCUMENT_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
     private static final Pattern ESPACIOS_LETRAS_DIGITOS_PATTERN = Pattern.compile("^[0-9A-Za-záéíóúÁÉÍÓÚ]+$");
+    
+    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚ]+$");
 
     private TextHelper() {}
 
@@ -78,5 +80,9 @@ public final class TextHelper {
 
     public static boolean isAlphanumericWithSpaces(final String value) {
         return ESPACIOS_LETRAS_DIGITOS_PATTERN.matcher(getDefault(value)).matches();
+    }
+   
+    public static boolean isOnlyLetters(final String value) {
+        return ONLY_LETTERS_PATTERN.matcher(getDefault(value)).matches();
     }
 }
