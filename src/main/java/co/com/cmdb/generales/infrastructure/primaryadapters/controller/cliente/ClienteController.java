@@ -14,6 +14,7 @@ import co.com.cmdb.generales.application.primaryports.interactor.cliente.Registr
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
 import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.ClienteResponse;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @RestController
 @RequestMapping("/clientes/api/v1/clientes")
@@ -21,10 +22,12 @@ import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.
 public class ClienteController {
 	
 	private RegistrarClienteInteractor registrarClienteInteractor;
+	private MessageCatalogService messageCatalogService;
 	
-	public ClienteController(final RegistrarClienteInteractor registrarClienteInteractor) {
+	public ClienteController(final RegistrarClienteInteractor registrarClienteInteractor, final MessageCatalogService messageCatalogService) {
 		
 		this.registrarClienteInteractor = registrarClienteInteractor;
+		this.messageCatalogService = messageCatalogService;
 		
 	}
 	
@@ -46,7 +49,7 @@ public class ClienteController {
 		try {
 			
 			registrarClienteInteractor.execute(cliente); 
-	        clienteResponse.getMensajes().add("Cliente creado de manera exitosa");
+	        clienteResponse.getMensajes().add(messageCatalogService.getMessage("clienteRegister"));
 			
 			
 		} catch (final CmdbException exception) {
