@@ -11,16 +11,19 @@ import co.com.cmdb.generales.application.primaryports.mapper.TipoDocumentoDtoMap
 import co.com.cmdb.generales.application.usecase.tipodocumento.TipoDocumento;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.crosscutting.exceptions.DataCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 @Transactional
 public class TipoDocumentoInteractorImpl implements TipoDocumentoInteractor{
 	
 	private TipoDocumento tipoDocumentoUseCase;
+	private MessageCatalogService messageCatalogService;
 	
-	public TipoDocumentoInteractorImpl(TipoDocumento tipoDocumentoUseCase) {
+	public TipoDocumentoInteractorImpl(final TipoDocumento tipoDocumentoUseCase, final MessageCatalogService messageCatalogService) {
 		
 		this.tipoDocumentoUseCase = tipoDocumentoUseCase;
+		this.messageCatalogService = messageCatalogService;
 		
 	}
 
@@ -35,7 +38,7 @@ public class TipoDocumentoInteractorImpl implements TipoDocumentoInteractor{
 			
 		} catch (CmdbException exception) {
 			
-			var userMessage = "Error consultando los Tipos de documentos";
+			var userMessage = messageCatalogService.getMessage("errorConsultTc");
 			throw DataCmdbException.create(userMessage);
 			
 		}

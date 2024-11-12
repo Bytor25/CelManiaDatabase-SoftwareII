@@ -61,7 +61,7 @@ public class ClienteController {
 		} catch (final Exception exception) {
 			
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-			var userMessage = "No se pudo llevar a cabo el registro del cliente";
+			var userMessage = messageCatalogService.getMessage("errorClientRegister");
 			clienteResponse.getMensajes().add(userMessage);
 			exception.printStackTrace();
 			
