@@ -5,7 +5,6 @@ import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatal
 
 public class ClienteNumeroDocumentoIsEmptyException extends RuleCmdbException{
 
-	
 	private static final long serialVersionUID = 1L;
 
 	public ClienteNumeroDocumentoIsEmptyException(String technicalMessage, String userMessage,

@@ -5,9 +5,6 @@ import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatal
 
 public class ClienteTelefonoRangeIsNotValidException extends RuleCmdbException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ClienteTelefonoRangeIsNotValidException(String technicalMessage, String userMessage,

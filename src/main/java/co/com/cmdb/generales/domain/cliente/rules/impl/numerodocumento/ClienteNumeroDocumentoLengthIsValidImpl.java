@@ -19,12 +19,14 @@ public class ClienteNumeroDocumentoLengthIsValidImpl implements ClienteNumeroDoc
 	
 	@Override
 	public void execute(String data) {
-		if(TextHelper.hasMinLength(data, 1)) {
+
+		if(!TextHelper.hasMinLength(data, 1)) {
 			throw ClienteNumeroDocumentoLengthIsNotValidException.create(2, messageCatalogService);
 		}else {
-			if(TextHelper.hasMaxLength(data, 10)) {
+			if(!TextHelper.hasMaxLength(data, 10)) {
 				throw ClienteNumeroDocumentoLengthIsNotValidException.create(1,messageCatalogService);
 			}
+
 		}		
 	}
 }

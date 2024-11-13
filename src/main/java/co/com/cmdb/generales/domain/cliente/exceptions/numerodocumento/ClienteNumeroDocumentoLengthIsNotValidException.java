@@ -3,6 +3,7 @@ package co.com.cmdb.generales.domain.cliente.exceptions.numerodocumento;
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
 import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
+
 public class ClienteNumeroDocumentoLengthIsNotValidException extends RuleCmdbException{
 
 	private static final long serialVersionUID = 1L;
@@ -24,7 +25,6 @@ public class ClienteNumeroDocumentoLengthIsNotValidException extends RuleCmdbExc
 			return new ClienteNumeroDocumentoLengthIsNotValidException(userMessage2, userMessage2, new Exception());
 		}
 		var userMessage = messageCatalogService.getMessage("ClienteNumeroDocumentoLengthIsNotValidException");
-		
 		return new ClienteNumeroDocumentoLengthIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

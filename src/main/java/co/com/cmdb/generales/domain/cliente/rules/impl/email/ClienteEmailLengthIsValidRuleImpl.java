@@ -19,12 +19,12 @@ public class ClienteEmailLengthIsValidRuleImpl implements ClienteEmailLengthIsVa
 	
 	@Override
 	public void execute(String data) {
-		if(TextHelper.hasMinLength(data,6)) {
+		if(!TextHelper.hasMinLength(data,6)) {
 			var typeUserMessage = 1;
 			throw ClienteEmailLengthIsNotValidException.create(typeUserMessage,messageCatalogService);
 		}
 		
-		if(TextHelper.hasMaxLength(data, 255)) {
+		if(!TextHelper.hasMaxLength(data, 255)) {
 			var typeUserMessage = 2;
 			throw ClienteEmailLengthIsNotValidException.create(typeUserMessage,messageCatalogService);
 		}

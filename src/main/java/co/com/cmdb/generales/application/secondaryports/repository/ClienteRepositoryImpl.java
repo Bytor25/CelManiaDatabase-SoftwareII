@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import co.com.cmdb.generales.application.secondaryports.entity.ClienteEntity;
 import co.com.cmdb.generales.crosscutting.exceptions.DataCmdbException;
+import co.com.cmdb.generales.crosscutting.helpers.BooleanHelper;
 import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
 import co.com.cmdb.generales.crosscutting.helpers.NumericHelper;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
@@ -27,7 +28,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 	}
 
 	@Override
-	public List<ClienteEntity> selectByFilter(ClienteEntity filter) {
+	public List<ClienteEntity> selectByFilter(final ClienteEntity filter) {
 		
 		try {
 			
@@ -40,34 +41,37 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 			if(ObjectHelper.isNull(filter)) {
 				
 				if(!UUIDHelper.isDefault(filter.getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
+					predicates.add(criteriaBuilder.equal(result.get("identificador"), filter.getId()));
 					
 				}
 				
-				if(ObjectHelper.isNull(filter.getTipoDocumento()) && !NumericHelper.isNull(filter.getTipoDocumento().getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("TipoDocumento"), filter.getTipoDocumento()));
+				if(!ObjectHelper.isNull(filter.getTipoDocumento()) && !NumericHelper.isNull(filter.getTipoDocumento().getId())) {
+					predicates.add(criteriaBuilder.equal(result.get("tipo_documento"), filter.getTipoDocumento()));
 					
 				}
 				
 				if(!TextHelper.isNull(filter.getNombre())) {
-					predicates.add(criteriaBuilder.equal(result.get("Nombre"), filter.getNombre()));
+					predicates.add(criteriaBuilder.equal(result.get("nombre"), filter.getNombre()));
 						
 				}
 		
 				
 				if(!TextHelper.isNull(filter.getApellidos())) {
-					predicates.add(criteriaBuilder.equal(result.get("Apellidos"), filter.getApellidos()));
+					predicates.add(criteriaBuilder.equal(result.get("apellidos"), filter.getApellidos()));
 					
 				}
 				
 				if(!TextHelper.isNull(filter.getCorreo())) {
-					predicates.add(criteriaBuilder.equal(result.get("Correo"), filter.getCorreo()));
+					predicates.add(criteriaBuilder.equal(result.get("correo"), filter.getCorreo()));
 						
 				}
 				
 				if(!LongHelper.isNull(filter.getTelefono())) {
-					predicates.add(criteriaBuilder.equal(result.get("Telefono"), filter.getTelefono()));
+					predicates.add(criteriaBuilder.equal(result.get("telefono"), filter.getTelefono()));
 					
+				}
+				if(!BooleanHelper.isNull(filter.isEstado())) {
+					predicates.add(criteriaBuilder.equal(result.get("estado"), filter.isEstado()));
 				}
 				
 			}

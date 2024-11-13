@@ -18,8 +18,10 @@ public class ClienteTelefonoIsNotEmptyImpl implements ClienteTelefonoIsNotEmptyR
 	
 	@Override
 	public void execute(Long data) {
-		if(TextHelper.isEmpty(null)) {
+
+		if(TextHelper.isEmpty(data.toString())) {
 			throw ClienteTelefonoIsEmptyException.create(messageCatalogService);
+
 		}
 		
 	}

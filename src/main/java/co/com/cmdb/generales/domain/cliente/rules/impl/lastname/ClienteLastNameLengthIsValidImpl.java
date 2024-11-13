@@ -19,11 +19,13 @@ public class ClienteLastNameLengthIsValidImpl implements ClienteLastNameLengthIs
 	
 	@Override
 	public void execute(String data) {
-		if(TextHelper.hasMinLength(data, 1)) {
+
+		if(!TextHelper.hasMinLength(data, 1)) {
 			throw ClienteLastNameLengthIsNotValidException.create(1,messageCatalogService);
 		}else {
-			if(TextHelper.hasMaxLength(data, 100)) {
+			if(!TextHelper.hasMaxLength(data, 100)) {
 				throw ClienteLastNameLengthIsNotValidException.create(2,messageCatalogService);
+
 			}
 		}
 		

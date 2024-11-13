@@ -8,11 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TipoDocumento")
+@Table(name = "tipos_documentos")
 public class TipoDocumentoEntity {
 	
 	@Id
-	@Column(name = "id")
+	@Column(name = "identificador")
 	private int id;
 	
 	@Column(name = "nombre")

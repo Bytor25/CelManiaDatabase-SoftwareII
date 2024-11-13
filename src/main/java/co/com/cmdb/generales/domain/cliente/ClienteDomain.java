@@ -14,6 +14,7 @@ public class ClienteDomain extends Domain {
 	private String correo;
 	private long telefono;
 
+
 	public ClienteDomain (final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo,final long telefono) {
 		
 		super(id);
@@ -34,13 +35,13 @@ public class ClienteDomain extends Domain {
 	
 	// Tipo Documento
 
-		public final TipoDocumentoDomain getTipoDocumento() {
-			return tipoDocumento;
-		}
+	public final TipoDocumentoDomain getTipoDocumento() {
+		return tipoDocumento;
+	}
 
-		public final void setTipoDocumento(TipoDocumentoDomain tipoDocumento) {
-			this.tipoDocumento = tipoDocumento;
-		}
+	public final void setTipoDocumento(TipoDocumentoDomain tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
 
 	// Numero Documento
 	
@@ -88,5 +89,7 @@ public class ClienteDomain extends Domain {
 	public final void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
+	
+
 	
 }
