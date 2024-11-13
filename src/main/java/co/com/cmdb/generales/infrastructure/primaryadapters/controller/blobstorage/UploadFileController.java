@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.cmdb.generales.application.primaryports.dto.UploadFileDTO;
-import co.com.cmdb.generales.init.service.UploadFileService;
+import co.com.cmdb.generales.application.secondaryports.service.blobstorage.UploadFileService;
 
 @RestController
 @RequestMapping("/blobstorage-azure")

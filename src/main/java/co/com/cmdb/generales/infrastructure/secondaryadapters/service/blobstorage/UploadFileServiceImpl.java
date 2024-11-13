@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.infrastructure.secondaryadapters.servicesblobstorage;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.blobstorage;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 import java.util.Base64;
 
 import co.com.cmdb.generales.application.primaryports.dto.UploadFileDTO;
-import co.com.cmdb.generales.init.service.UploadFileService;
+import co.com.cmdb.generales.application.secondaryports.service.blobstorage.UploadFileService;
 
 @Service
 public class UploadFileServiceImpl implements UploadFileService {

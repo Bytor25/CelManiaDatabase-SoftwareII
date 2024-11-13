@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.init.service;
+package co.com.cmdb.generales.application.secondaryports.service.blobstorage;
 
 import co.com.cmdb.generales.application.primaryports.dto.UploadFileDTO;
 
