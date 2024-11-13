@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.telefono;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteTelefonoRangeIsNotValidException extends RuleCmdbException {
 
@@ -12,8 +13,8 @@ public class ClienteTelefonoRangeIsNotValidException extends RuleCmdbException {
 
 	}
 	
-	public static final ClienteTelefonoRangeIsNotValidException create() {
-		var userMessage = "El número de teléfono del cliente está fuera del rango permitido. Por favor, verifique e ingrese un número válido.";
+	public static final ClienteTelefonoRangeIsNotValidException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteTelefonoRangeIsNotValidException");
 		return new ClienteTelefonoRangeIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

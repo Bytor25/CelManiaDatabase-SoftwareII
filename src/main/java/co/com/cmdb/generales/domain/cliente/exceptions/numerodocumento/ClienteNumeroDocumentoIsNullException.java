@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.numerodocumento;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteNumeroDocumentoIsNullException extends RuleCmdbException{
 
@@ -11,8 +12,8 @@ public class ClienteNumeroDocumentoIsNullException extends RuleCmdbException{
 
 	}
 	
-	public static final ClienteNumeroDocumentoIsNullException create() {
-		var userMessage = "El número de documento del cliente no puede ser nulo. Por favor, asegúrese de que el cliente tenga un número de documento válido antes de continuar";
+	public static final ClienteNumeroDocumentoIsNullException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteNumeroDocumentoIsNullException");
 		return new ClienteNumeroDocumentoIsNullException(userMessage, userMessage, new Exception());
 	}
 

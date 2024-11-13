@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.lastname;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 
 public class ClienteLastNameLengthIsNotValidException extends RuleCmdbException{
@@ -12,16 +13,17 @@ public class ClienteLastNameLengthIsNotValidException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteLastNameLengthIsNotValidException create(int typeUserMessage) {
+	public static final ClienteLastNameLengthIsNotValidException create(int typeUserMessage,MessageCatalogService messageCatalogService) {
 		if(typeUserMessage == 1) {
-			var userMessage1 = "El apellido ingresado es demasiado corto. Por favor, ingresa un apellido válido.";
+			
+			var userMessage1 = messageCatalogService.getMessage("ClienteLastNameLengthIsNotValidExceptionCorto");
 			return new ClienteLastNameLengthIsNotValidException(userMessage1, userMessage1, new Exception());
 		}
 		if(typeUserMessage == 2){
-			var userMessage2 = "El apellido ingresado es demasiado largo. Por favor, verifica e ingresa un apellido con menos caracteres.";
+			var userMessage2 = messageCatalogService.getMessage("ClienteLastNameLengthIsNotValidExceptionLargo");
 			return new ClienteLastNameLengthIsNotValidException(userMessage2, userMessage2, new Exception());
 		}
-		var userMessage="Se ha producido un error a la hora de validar la longitud del apellido, si el problema persiste, contacte al administrador";
+		var userMessage = messageCatalogService.getMessage("ClienteLastNameLengthIsNotValidException");
 		return new ClienteLastNameLengthIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

@@ -1,6 +1,8 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.numerodocumento;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+
 
 public class ClienteNumeroDocumentoLengthIsNotValidException extends RuleCmdbException{
 
@@ -11,16 +13,18 @@ public class ClienteNumeroDocumentoLengthIsNotValidException extends RuleCmdbExc
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteNumeroDocumentoLengthIsNotValidException create(int typeUserMessage) {
+	public static final ClienteNumeroDocumentoLengthIsNotValidException create(int typeUserMessage, MessageCatalogService messageCatalogService) {
 		if(typeUserMessage == 1) {
-			var userMessage1 = "El numero de documento ingresado es demasiado corto. Por favor, ingresa un numero de documento válido.";
+			
+			var userMessage1 = messageCatalogService.getMessage("ClienteNumeroDocumentoLengthIsNotValidExceptionCorto");
 			return new ClienteNumeroDocumentoLengthIsNotValidException(userMessage1, userMessage1, new Exception());
 		}
 		if(typeUserMessage == 2){
-			var userMessage2 = "El numero de documento ingresado es demasiado largo. Por favor, verifica e ingresa un numero de documento con menos caracteres.";
+			
+			var userMessage2 = messageCatalogService.getMessage("ClienteNumeroDocumentoLengthIsNotValidExceptionLargo");
 			return new ClienteNumeroDocumentoLengthIsNotValidException(userMessage2, userMessage2, new Exception());
 		}
-		var userMessage="Se ha producido un error a la hora de validar la longitud del numero de  dodumento, si el problema persiste, contacte al administrador";
+		var userMessage = messageCatalogService.getMessage("ClienteNumeroDocumentoLengthIsNotValidException");
 		return new ClienteNumeroDocumentoLengthIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

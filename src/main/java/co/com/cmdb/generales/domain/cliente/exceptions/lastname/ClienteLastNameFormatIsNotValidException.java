@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.lastname;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteLastNameFormatIsNotValidException extends RuleCmdbException{
 
@@ -11,8 +12,8 @@ public class ClienteLastNameFormatIsNotValidException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteLastNameFormatIsNotValidException create() {
-		var userMessage = "El apellido ingresado contiene caracteres no permitidos. Por favor, ingresa solo letras.";
+	public static final ClienteLastNameFormatIsNotValidException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteLastNameFormatIsNotValidException");
 		return new ClienteLastNameFormatIsNotValidException(userMessage, userMessage, new Exception());
 	}
 }

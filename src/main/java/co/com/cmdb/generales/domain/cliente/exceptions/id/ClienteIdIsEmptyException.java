@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.id;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public final class ClienteIdIsEmptyException extends RuleCmdbException  {
 
@@ -11,9 +12,8 @@ public final class ClienteIdIsEmptyException extends RuleCmdbException  {
 		
 	}
 	
-	public static final ClienteIdIsEmptyException create() {
-		
-		var userMessage = "El cliente tiene un identificador vacío";
+	public static final ClienteIdIsEmptyException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteIdIsEmptyException");
 		return new ClienteIdIsEmptyException(userMessage, userMessage, new Exception());
 		
 	}

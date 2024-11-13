@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.id;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public final class ClienteIdFormatIsNotValidException extends RuleCmdbException {
 	
@@ -11,9 +12,8 @@ public final class ClienteIdFormatIsNotValidException extends RuleCmdbException 
 
 	}
 	
-	public static final ClienteIdFormatIsNotValidException create() {
-		
-		var userMessage = "El cliente tiene un identificador con un formato no válido al correspodiente al valor por defecto";
+	public static final ClienteIdFormatIsNotValidException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteIdFormatIsNotValidException");
 		return new ClienteIdFormatIsNotValidException(userMessage, userMessage, new Exception());
 		
 	}

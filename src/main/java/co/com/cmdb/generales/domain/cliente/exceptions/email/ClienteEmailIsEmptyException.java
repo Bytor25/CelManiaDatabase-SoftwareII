@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.email;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteEmailIsEmptyException extends RuleCmdbException{
 
@@ -10,8 +11,8 @@ public class ClienteEmailIsEmptyException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteEmailIsEmptyException create() {
-		var userMessage = "El campo de correo electrónico está vacío. Por favor, ingrese una dirección de correo electrónico.";
+	public static final ClienteEmailIsEmptyException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteEmailIsEmptyException");
 		return new ClienteEmailIsEmptyException(userMessage, userMessage, new Exception());
 	}
 

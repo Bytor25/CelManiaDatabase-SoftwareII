@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.telefono;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteTelefonoIsEmptyException extends RuleCmdbException{
 
@@ -8,10 +9,11 @@ public class ClienteTelefonoIsEmptyException extends RuleCmdbException{
 
 	public ClienteTelefonoIsEmptyException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
+
 	}
 	
-	public static final ClienteTelefonoIsEmptyException create() {
-		var userMessage = "El número de teléfono del cliente no puede estar vacío. Por favor, proporcione un número válido.";
+	public static final ClienteTelefonoIsEmptyException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteTelefonoIsEmptyException");
 		return new ClienteTelefonoIsEmptyException(userMessage, userMessage, new Exception());
 	}
 
