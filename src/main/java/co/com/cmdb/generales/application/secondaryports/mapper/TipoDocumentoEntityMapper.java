@@ -14,12 +14,12 @@ public interface TipoDocumentoEntityMapper {
     TipoDocumentoEntityMapper INSTANCE = Mappers.getMapper(TipoDocumentoEntityMapper.class);
 
     // Mapeo de TipoDocumentoEntity a TipoDocumentoDomain
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "identificador", target = "identificador")
     @Mapping(source = "nombre", target = "nombre")
     TipoDocumentoDomain toDomain(TipoDocumentoEntity entity);
 
     // Mapeo de TipoDocumentoDomain a TipoDocumentoEntity
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "identificador", target = "identificador")
     @Mapping(source = "nombre", target = "nombre")
     TipoDocumentoEntity toEntity(TipoDocumentoDomain domain);
 

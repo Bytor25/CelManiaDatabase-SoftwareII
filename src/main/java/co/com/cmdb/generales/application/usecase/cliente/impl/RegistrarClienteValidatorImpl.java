@@ -168,7 +168,7 @@ public final class RegistrarClienteValidatorImpl implements RegistrarClienteRule
 	private void validateRulesRelatedWithTipoDocumento(final TipoDocumentoDomain tipoDocumentoDomain) {
 		clienteTipoDocumentoDoesExist.execute(tipoDocumentoDomain);
 		clienteTipoDocumentoDoesNotExist.execute(tipoDocumentoDomain);
-		clienteTipoDocumentoIdIsNotEmpty.execute(tipoDocumentoDomain.getId());
+		clienteTipoDocumentoIdIsNotEmpty.execute(tipoDocumentoDomain.getIdentificador());
 	}
 
 }

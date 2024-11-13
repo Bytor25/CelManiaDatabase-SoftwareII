@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import co.com.cmdb.generales.application.secondaryports.mapper.ClienteEntityMapper;
-import co.com.cmdb.generales.application.secondaryports.repository.ClienteRepository;
+import co.com.cmdb.generales.application.secondaryports.repository.cliente.ClienteRepository;
 import co.com.cmdb.generales.application.usecase.cliente.ConsultarCliente;
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 

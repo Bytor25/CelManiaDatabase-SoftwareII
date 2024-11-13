@@ -32,14 +32,14 @@ public interface ClienteDtoMapper {
     @Named("mapTipoDocumentoDtoToDomain")
     default TipoDocumentoDomain mapTipoDocumentoDtoToDomain(TipoDocumentoDTO tipoDocumentoDTO) {
         // Crear un TipoDocumentoDomain usando los valores del DTO
-        return TipoDocumentoDomain.create(tipoDocumentoDTO.getId(), tipoDocumentoDTO.getNombre());
+        return TipoDocumentoDomain.create(tipoDocumentoDTO.getIdentificador(), tipoDocumentoDTO.getNombre());
     }
 
     // Método personalizado para mapear TipoDocumentoDomain a TipoDocumentoDTO
     @Named("mapTipoDocumentoDomainToDto")
     default TipoDocumentoDTO mapTipoDocumentoDomainToDto(TipoDocumentoDomain tipoDocumentoDomain) {
         // Crear un TipoDocumentoDTO usando los valores del Domain
-        return TipoDocumentoDTO.create(tipoDocumentoDomain.getId(), tipoDocumentoDomain.getNombre());
+        return TipoDocumentoDTO.create(tipoDocumentoDomain.getIdentificador(), tipoDocumentoDomain.getNombre());
     }
     
     List<ClienteDTO> toDtoCollection(List<ClienteDomain> domains);

@@ -6,7 +6,7 @@ public class Domain {
 	
 	private UUID id;
 	
-	protected Domain(final UUID id) {
+	public Domain(final UUID id) {
 		setId(id);
 	}
 	

@@ -13,21 +13,21 @@ public class TipoDocumentoEntity {
 	
 	@Id
 	@Column(name = "identificador")
-	private int id;
+	private int identificador;
 	
 	@Column(name = "nombre")
 	private String nombre;
 	
 	public TipoDocumentoEntity() {
 		
-		setId(NumericHelper.DEFAULT_INT);
+		setIdentificador(NumericHelper.DEFAULT_INT);
 		setNombre(TextHelper.EMPTY);
 		
 	}
 	
-	public TipoDocumentoEntity(final int id, final String nombre) {
+	public TipoDocumentoEntity(final int identificador, final String nombre) {
 		
-		setId(id);
+		setIdentificador(identificador);
 		setNombre(nombre);
 		
 	}
@@ -38,24 +38,24 @@ public class TipoDocumentoEntity {
 		
 	}
 	
-	public static final TipoDocumentoEntity create(final int id) {
+	public static final TipoDocumentoEntity create(final int identificador) {
 		
-		return new TipoDocumentoEntity(id, TextHelper.EMPTY);
+		return new TipoDocumentoEntity(identificador, TextHelper.EMPTY);
 		
 	}
 	
-	public static final TipoDocumentoEntity create(final int id, final String name) {
+	public static final TipoDocumentoEntity create(final int identificador, final String name) {
 		
-		return new TipoDocumentoEntity(id, name);
+		return new TipoDocumentoEntity(identificador, name);
 				
 	}
 
-	public int getId() {
-		return id;
+	public int getIdentificador() {
+		return identificador;
 	}
 
-	public void setId(final int id) {
-		this.id = NumericHelper.getDefaultValue(id);
+	public void setIdentificador(final int identificador) {
+		this.identificador = NumericHelper.getDefaultValue(identificador);
 	}
 
 	public String getNombre() {
