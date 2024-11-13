@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.init.config;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,12 +1,12 @@
 package co.com.cmdb.generales.infrastructure.primaryadapters.controller.backup;
 
-import co.com.cmdb.generales.init.service.StorageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage.StorageService;
 
 import java.io.IOException;
 
@@ -16,7 +16,6 @@ public class StorageController {
 
     private final StorageService storageService;
 
-    @Autowired
     public StorageController(StorageService storageService) {
         this.storageService = storageService;
     }

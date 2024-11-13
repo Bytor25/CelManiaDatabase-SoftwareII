@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.init.service;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage;
 
 import java.io.File;
 import java.io.FileOutputStream;
