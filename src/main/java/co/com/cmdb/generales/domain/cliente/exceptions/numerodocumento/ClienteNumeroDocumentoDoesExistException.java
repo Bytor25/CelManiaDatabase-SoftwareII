@@ -4,9 +4,6 @@ import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
 
 public class ClienteNumeroDocumentoDoesExistException extends RuleCmdbException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ClienteNumeroDocumentoDoesExistException(String technicalMessage, String userMessage,

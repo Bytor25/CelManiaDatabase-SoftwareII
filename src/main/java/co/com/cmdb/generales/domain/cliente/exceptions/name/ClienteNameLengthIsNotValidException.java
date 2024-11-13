@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.name;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 
 public class ClienteNameLengthIsNotValidException extends RuleCmdbException{
@@ -12,16 +13,16 @@ public class ClienteNameLengthIsNotValidException extends RuleCmdbException{
 	}
 	
 
-	public static final ClienteNameLengthIsNotValidException create(int typeUserMessage) {
+	public static final ClienteNameLengthIsNotValidException create(int typeUserMessage, MessageCatalogService messageCatalogService) {
 		if(typeUserMessage == 1) {
-			var userMessage1 = "El nombre ingresado es demasiado corto. Por favor, ingresa un nombre válido.";
+			var userMessage1 = messageCatalogService.getMessage("ClienteNameLengthIsNotValidExceptionCorto");
 			return new ClienteNameLengthIsNotValidException(userMessage1, userMessage1, new Exception());
 		}
 		if(typeUserMessage == 2){
-			var userMessage2 = "El nombre ingresado es demasiado largo. Por favor, verifica e ingresa un nombre con menos caracteres.";
+			var userMessage2 = messageCatalogService.getMessage("ClienteNameLengthIsNotValidExceptionLargo");
 			return new ClienteNameLengthIsNotValidException(userMessage2, userMessage2, new Exception());
 		}
-		var userMessage="Se ha producido un error a la hora de validar la longitud del nombre, si el problema persiste, contacte al administrador";
+		var userMessage = messageCatalogService.getMessage("ClienteNameLengthIsNotValidException");
 		return new ClienteNameLengthIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

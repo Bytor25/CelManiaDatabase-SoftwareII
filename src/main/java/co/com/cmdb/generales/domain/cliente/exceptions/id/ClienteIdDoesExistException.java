@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.id;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteIdDoesExistException extends RuleCmdbException{
 
@@ -10,8 +11,8 @@ public class ClienteIdDoesExistException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteIdDoesExistException create() {
-		var userMessage = "El id del cliente si existe...";
+	public static final ClienteIdDoesExistException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteIdDoesExistException");
 		return new ClienteIdDoesExistException(userMessage, userMessage, new Exception());
 	}
 

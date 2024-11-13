@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.email;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteEmailFormatIsNotValidException  extends RuleCmdbException{
 
@@ -11,8 +12,8 @@ public class ClienteEmailFormatIsNotValidException  extends RuleCmdbException{
 
 	}
 	
-	public static final ClienteEmailFormatIsNotValidException create() {
-		var userMessage = "El formato del correo electrónico ingresado no es válido. Por favor, verifica e intenta nuevamente.";
+	public static final ClienteEmailFormatIsNotValidException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteEmailFormatIsNotValidException");
 		return new ClienteEmailFormatIsNotValidException(userMessage, userMessage, new Exception());
 	}
 

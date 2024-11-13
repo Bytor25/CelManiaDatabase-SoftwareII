@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.lastname;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteLastNameIsNullException extends RuleCmdbException{
 
@@ -10,8 +11,8 @@ public class ClienteLastNameIsNullException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteLastNameIsNullException create() {
-		var userMessage = "El campo de apellido es obligatorio. Por favor, ingresa un apellido válido.";
+	public static final ClienteLastNameIsNullException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteLastNameIsNullException");
 		return new ClienteLastNameIsNullException(userMessage, userMessage, new Exception());
 	}
 
