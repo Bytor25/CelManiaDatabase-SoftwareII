@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.cmdb.generales.application.primaryports.dto.ClienteDTO;
 import co.com.cmdb.generales.application.primaryports.dto.TipoDocumentoDTO;
+import co.com.cmdb.generales.application.primaryports.interactor.cliente.ConsultarClienteInteractor;
 import co.com.cmdb.generales.application.primaryports.interactor.cliente.RegistrarClienteInteractor;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
-import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
 import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.ClienteResponse;
 import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
@@ -23,21 +23,42 @@ public class ClienteController {
 	
 	private RegistrarClienteInteractor registrarClienteInteractor;
 	private MessageCatalogService messageCatalogService;
+	private ConsultarClienteInteractor consultarClienteInteractor;
 	
-	public ClienteController(final RegistrarClienteInteractor registrarClienteInteractor, final MessageCatalogService messageCatalogService) {
+	public ClienteController(final RegistrarClienteInteractor registrarClienteInteractor, final MessageCatalogService messageCatalogService, final ConsultarClienteInteractor consultarClienteInteractor) {
 		
 		this.registrarClienteInteractor = registrarClienteInteractor;
 		this.messageCatalogService = messageCatalogService;
+		this.consultarClienteInteractor = consultarClienteInteractor;
 		
 	}
 	
 	TipoDocumentoDTO tipoDocumento = TipoDocumentoDTO.create(1, "Cédula de Ciudadanía");
 	
 	@GetMapping
-	public ClienteDTO getDummy() {
+	public ResponseEntity<ClienteResponse> consultarCliente() {
 		
-		return ClienteDTO.create(tipoDocumento, "101031", "juan", "gallego", "gaga@gmail.com", LongHelper.DEFAULT_LONG);
+		var httpStatusCode = HttpStatus.ACCEPTED;
+		var clienteResponse = new ClienteResponse();
 		
+		try {
+			var consultarClienteDto = ClienteDTO.create();
+			
+			clienteResponse.setDatos(consultarClienteInteractor.execute(consultarClienteDto));
+			var userMessage = "Usuarios consultados exitosamente";
+			clienteResponse.getMensajes().add(userMessage);
+			
+			
+		}catch(CmdbException exception){
+			httpStatusCode = HttpStatus.BAD_REQUEST;
+			var userMessage = "Se ha presentado un error a la hora de consultar un cliente";
+			
+			clienteResponse.getMensajes().add(userMessage);
+			
+			exception.printStackTrace();
+		}
+		
+		return new ResponseEntity<>(clienteResponse , httpStatusCode);
 	}
 	
 	@PostMapping

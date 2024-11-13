@@ -1,7 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.numerodocumento;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 public class ClienteNumeroDocumentoFormatIsNotValidException extends RuleCmdbException {
 

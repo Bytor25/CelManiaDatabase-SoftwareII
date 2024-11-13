@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import co.com.cmdb.generales.application.secondaryports.repository.ClienteRepository;
 import co.com.cmdb.generales.domain.cliente.exceptions.id.ClienteIdDoesNotExistException;
 import co.com.cmdb.generales.domain.cliente.rules.id.ClienteIdDoesExistRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteIdDoesExistRuleImpl implements ClienteIdDoesExistRule {

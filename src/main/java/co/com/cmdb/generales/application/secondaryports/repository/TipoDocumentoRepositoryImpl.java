@@ -39,8 +39,8 @@ public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepositoryCusto
 					
 				}
 				
-				if(!TextHelper.isNull(filter.getName())) {
-					predicates.add(criteriaBuilder.equal(result.get("nombre"), filter.getName()));
+				if(!TextHelper.isNull(filter.getNombre())) {
+					predicates.add(criteriaBuilder.equal(result.get("nombre"), filter.getNombre()));
 				
 				}
 				
