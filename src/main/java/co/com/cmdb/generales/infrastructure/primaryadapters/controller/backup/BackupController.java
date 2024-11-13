@@ -6,25 +6,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage.StorageService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.backup.BackupService;
 
 import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/storage")
-public class StorageController {
+public class BackupController {
 
-    private final StorageService storageService;
+    private final BackupService BackupService;
 
-    public StorageController(StorageService storageService) {
-        this.storageService = storageService;
+    public BackupController(BackupService BackupService) {
+        this.BackupService = BackupService;
     }
 
     // Endpoint para subir un archivo
     @PostMapping("/upload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         try {
-            String fileUrl = storageService.uploadFile(file);
+            String fileUrl = BackupService.uploadFile(file);
             return new ResponseEntity<>("Archivo subido exitosamente: " + fileUrl, HttpStatus.OK);
         } catch (IOException e) {
             return new ResponseEntity<>("Error al subir el archivo: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -34,7 +34,7 @@ public class StorageController {
     // Endpoint para descargar un archivo
     @GetMapping("/download/{fileName}")
     public ResponseEntity<byte[]> downloadFile(@PathVariable String fileName) {
-        byte[] fileData = storageService.downloadFile(fileName);
+        byte[] fileData = BackupService.downloadFile(fileName);
         
         if (fileData != null) {
             HttpHeaders headers = new HttpHeaders();
@@ -48,7 +48,7 @@ public class StorageController {
     // Endpoint para eliminar un archivo
     @DeleteMapping("/delete/{fileName}")
     public ResponseEntity<String> deleteFile(@PathVariable String fileName) {
-        String result = storageService.deleteFile(fileName);
+        String result = BackupService.deleteFile(fileName);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

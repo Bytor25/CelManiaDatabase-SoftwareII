@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.backup;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Configuration
-public class StorageConfig {
+public class BackupConfig {
 	
 	  @Value("${aws.accessKeyId}")
 	  private String accessKey;
