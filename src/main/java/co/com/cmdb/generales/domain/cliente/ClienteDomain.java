@@ -13,9 +13,11 @@ public class ClienteDomain extends Domain {
 	private String apellidos;
 	private String correo;
 	private long telefono;
+	private boolean estado;
 
 
-	public ClienteDomain (final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo,final long telefono) {
+	public ClienteDomain (final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento,
+			final String nombre, final String apellidos, final String correo,final long telefono, final boolean estado) {
 		
 		super(id);
 		setTipoDocumento(tipoDocumento);
@@ -24,12 +26,14 @@ public class ClienteDomain extends Domain {
 		setApellidos(apellidos);
 		setCorreo(correo);
 		setTelefono(telefono);
+		setEstado(estado);
 		
 	}
 	
-	public static final ClienteDomain create(final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono) {
+	public static final ClienteDomain create(final UUID id, final TipoDocumentoDomain tipoDocumento, final String numeroDocumento, 
+			final String nombre, final String apellidos, final String correo, final Long telefono, final boolean estado) {
 		
-		return new ClienteDomain(id, tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono);
+		return new ClienteDomain(id, tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono, estado);
 
 	}
 	
@@ -89,6 +93,17 @@ public class ClienteDomain extends Domain {
 	public final void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
+	
+	// Estado
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	
+	
 	
 
 	

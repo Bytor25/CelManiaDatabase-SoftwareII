@@ -10,7 +10,6 @@ import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatal
 @Service
 public class ClienteTelefonoRangeIsValidImpl implements ClienteTelefonoRangeIsValidRule{
 
-	
 	private MessageCatalogService messageCatalogService;
 	
 	public ClienteTelefonoRangeIsValidImpl(MessageCatalogService messageCatalogService) {
@@ -19,8 +18,9 @@ public class ClienteTelefonoRangeIsValidImpl implements ClienteTelefonoRangeIsVa
 	
 	@Override
 	public void execute(Long data) {
-		if(NumericHelper.validarRangoTelefono(data));
+		if(!NumericHelper.validarRangoTelefono(data)) {
 		throw ClienteTelefonoRangeIsNotValidException.create(messageCatalogService);
+		}
 	}
 
 }

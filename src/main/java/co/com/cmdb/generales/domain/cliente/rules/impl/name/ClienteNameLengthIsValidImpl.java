@@ -21,10 +21,10 @@ public class ClienteNameLengthIsValidImpl implements ClienteNameLengthIsValidRul
 	@Override
 	public void execute(String data) {
 
-		if(TextHelper.hasMinLength(data, 1)) {
+		if(!TextHelper.hasMinLength(data, 1)) {
 			throw ClienteNameLengthIsNotValidException.create(1,messageCatalogService);
 		}else {
-			if(TextHelper.hasMaxLength(data, 60)) {
+			if(!TextHelper.hasMaxLength(data, 60)) {
 				throw ClienteNameLengthIsNotValidException.create(2,messageCatalogService);
 
 			}

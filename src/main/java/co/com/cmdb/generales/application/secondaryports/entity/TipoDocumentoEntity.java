@@ -16,19 +16,19 @@ public class TipoDocumentoEntity {
 	private int id;
 	
 	@Column(name = "nombre")
-	private String name;
+	private String nombre;
 	
 	public TipoDocumentoEntity() {
 		
 		setId(NumericHelper.DEFAULT_INT);
-		setName(TextHelper.EMPTY);
+		setNombre(TextHelper.EMPTY);
 		
 	}
 	
-	public TipoDocumentoEntity(final int id, final String name) {
+	public TipoDocumentoEntity(final int id, final String nombre) {
 		
 		setId(id);
-		setName(name);
+		setNombre(nombre);
 		
 	}
 	
@@ -58,12 +58,12 @@ public class TipoDocumentoEntity {
 		this.id = NumericHelper.getDefaultValue(id);
 	}
 
-	public String getName() {
-		return name;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setName(String name) {
-		this.name = TextHelper.getDefault(name, TextHelper.EMPTY);
+	public void setNombre(String nombre) {
+		this.nombre = TextHelper.getDefault(nombre, TextHelper.EMPTY);
 	}
 	
 	

@@ -10,7 +10,7 @@ public class ClienteEmailUniqueForNumeroDocumentoIsNotValidException extends Rul
 			Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
 	}
-	ClienteEmailUniqueForNumeroDocumentoIsNotValidException create() {
+	public static final ClienteEmailUniqueForNumeroDocumentoIsNotValidException create() {
 		var userMessage = "Ya existe un cliente registrado con este correo. Verifique los datos ingresados.";
 		return new ClienteEmailUniqueForNumeroDocumentoIsNotValidException(userMessage, userMessage, new Exception());
 	}
