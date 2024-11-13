@@ -4,15 +4,11 @@ import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
 
 public class ClienteNumeroDocumentoIsEmptyException extends RuleCmdbException{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public ClienteNumeroDocumentoIsEmptyException(String technicalMessage, String userMessage,
 			Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static final ClienteNumeroDocumentoIsEmptyException create() {

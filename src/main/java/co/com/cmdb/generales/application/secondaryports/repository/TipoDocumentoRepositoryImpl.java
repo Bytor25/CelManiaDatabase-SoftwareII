@@ -35,7 +35,7 @@ public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepositoryCusto
 			if(!ObjectHelper.isNull(filter)) {
 				
 				if(!NumericHelper.isNull(filter.getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
+					predicates.add(criteriaBuilder.equal(result.get("identificador"), filter.getId()));
 					
 				}
 				

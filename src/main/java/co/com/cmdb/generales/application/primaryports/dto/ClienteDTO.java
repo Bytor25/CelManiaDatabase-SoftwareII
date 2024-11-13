@@ -15,8 +15,8 @@ public class ClienteDTO {
 	
 	public ClienteDTO() {
 		
-		setTipoDocumento(TipoDocumentoDTO.create());
 		setNumeroDocumento(TextHelper.EMPTY);
+		setTipoDocumento(TipoDocumentoDTO.create());
 		setNombre(TextHelper.EMPTY);
 		setApellidos(TextHelper.EMPTY);
 		setCorreo(TextHelper.EMPTY);
