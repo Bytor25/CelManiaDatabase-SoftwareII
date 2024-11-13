@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.infrastructure.secondaryadapters.service.storage;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.backup;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +13,7 @@ import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
 
 @Service
-public class StorageService {
+public class BackupService {
 
     @Value("${application.bucket.name}")
     private String bucketName;
@@ -21,7 +21,7 @@ public class StorageService {
     private final AmazonS3 s3Client;
 
     // Inyección de AmazonS3 a través del constructor
-    public StorageService(AmazonS3 s3Client) {
+    public BackupService(AmazonS3 s3Client) {
         this.s3Client = s3Client;
     }
 

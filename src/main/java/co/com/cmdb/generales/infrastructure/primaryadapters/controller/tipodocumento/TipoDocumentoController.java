@@ -11,7 +11,9 @@ import co.com.cmdb.generales.application.primaryports.interactor.tipodocumento.T
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.TipoDocumentoResponse;
 
+
 @RestController 
+
 @RequestMapping("/generales/api/v1/tiposdocumento")
 public class TipoDocumentoController {
 

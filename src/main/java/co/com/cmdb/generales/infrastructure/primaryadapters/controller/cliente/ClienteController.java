@@ -16,7 +16,7 @@ import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.
 import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @RestController
-@RequestMapping("/clientes/api/v1/clientes")
+@RequestMapping("/generales/api/v1/clientes")
 
 public class ClienteController {
 	
