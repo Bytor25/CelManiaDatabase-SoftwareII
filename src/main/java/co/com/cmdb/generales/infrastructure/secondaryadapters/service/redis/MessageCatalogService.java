@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.infrastructure.secondaryadapters.redis;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

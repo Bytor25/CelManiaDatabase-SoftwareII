@@ -28,7 +28,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 	}
 
 	@Override
-	public List<ClienteEntity> selectByFilter(final ClienteEntity filter) {
+	public List<ClienteEntity> selectByFilter (final ClienteEntity filter) {
 		
 		try {
 			
@@ -85,9 +85,6 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 			throw new DataCmdbException("Error", "Error", exception);
 			
 		}
-		
-		
-	
 		
 	}
 
