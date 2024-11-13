@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.cliente.exceptions.telefono.ClienteTelefonoIsEmptyException;
 import co.com.cmdb.generales.domain.cliente.rules.telefono.ClienteTelefonoIsNotEmptyRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteTelefonoIsNotEmptyImpl implements ClienteTelefonoIsNotEmptyRule{

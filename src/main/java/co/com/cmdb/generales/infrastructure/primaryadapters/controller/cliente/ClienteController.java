@@ -14,7 +14,7 @@ import co.com.cmdb.generales.application.primaryports.interactor.cliente.Consult
 import co.com.cmdb.generales.application.primaryports.interactor.cliente.RegistrarClienteInteractor;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.ClienteResponse;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @RestController
 @RequestMapping("/clientes/api/v1/clientes")

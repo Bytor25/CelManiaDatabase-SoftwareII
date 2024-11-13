@@ -11,7 +11,7 @@ import co.com.cmdb.generales.application.primaryports.mapper.TipoDocumentoDtoMap
 import co.com.cmdb.generales.application.usecase.tipodocumento.TipoDocumento;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.crosscutting.exceptions.DataCmdbException;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 @Transactional

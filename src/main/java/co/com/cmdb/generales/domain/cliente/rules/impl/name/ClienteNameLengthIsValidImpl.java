@@ -6,7 +6,7 @@ import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.cliente.exceptions.name.ClienteNameLengthIsNotValidException;
 
 import co.com.cmdb.generales.domain.cliente.rules.name.ClienteNameLengthIsValidRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteNameLengthIsValidImpl implements ClienteNameLengthIsValidRule {

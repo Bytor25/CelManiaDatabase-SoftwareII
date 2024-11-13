@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.init.service;
+package co.com.cmdb.generales.infrastructure.secondaryadapters.service.notification;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import com.amazonaws.services.sns.AmazonSNSClient;
 import com.amazonaws.services.sns.AmazonSNSClientBuilder;
 
 @Configuration
-public class NotificationService {
+public class NotificationServiceConfig {
 
     @Value("${aws.accessKeyId}")
     private String accessKey;
@@ -32,4 +32,3 @@ public class NotificationService {
                 .build();
     }
 }
-
