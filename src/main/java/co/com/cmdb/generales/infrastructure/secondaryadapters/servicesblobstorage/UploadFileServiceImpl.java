@@ -1,5 +1,6 @@
 package co.com.cmdb.generales.infrastructure.secondaryadapters.servicesblobstorage;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.azure.storage.blob.BlobClient;
@@ -19,10 +20,13 @@ import co.com.cmdb.generales.init.service.UploadFileService;
 @Service
 public class UploadFileServiceImpl implements UploadFileService {
     
+	@Value("${blobstorage.connection}")
+	private String blobstorageconnection;
+	
 	@Override
     public String uploadFileAzure(UploadFileDTO uploadFileDTO) {
         String resultService = "";
-        String storageConnectionAzure = "DefaultEndpointsProtocol=https;AccountName=storagecelmania;AccountKey=kYQLd9hH3CnGpCZBCs4Ex8c4a8kgX+Yw+0cYEY9igdLQp/xpCb44VghhR8RNB73CSxKoKstG4i+a+AStrYV2uQ==;EndpointSuffix=core.windows.net";
+        String storageConnectionAzure = blobstorageconnection;
         String nameContainer = "contenedor1";
 
         try {
@@ -62,7 +66,7 @@ public class UploadFileServiceImpl implements UploadFileService {
 	@Override
 	public String downloadFileAzure(UploadFileDTO uploadFileDTO) {
 		String resultService = "";
-        String storageConnectionAzure = "DefaultEndpointsProtocol=https;AccountName=storagecelmania;AccountKey=kYQLd9hH3CnGpCZBCs4Ex8c4a8kgX+Yw+0cYEY9igdLQp/xpCb44VghhR8RNB73CSxKoKstG4i+a+AStrYV2uQ==;EndpointSuffix=core.windows.net";
+        String storageConnectionAzure = blobstorageconnection;
         String nameContainer = "contenedor1";
         String userHome = System.getProperty("user.home");
         String downloadFolderPath = userHome + File.separator + "Downloads"; // Directorio de Descargas
@@ -99,7 +103,7 @@ public class UploadFileServiceImpl implements UploadFileService {
 	public String deleteFileAzure(UploadFileDTO uploadFileDTO) {
 
 		String resultService = "";
-        String storageConnectionAzure = "DefaultEndpointsProtocol=https;AccountName=storagecelmania;AccountKey=kYQLd9hH3CnGpCZBCs4Ex8c4a8kgX+Yw+0cYEY9igdLQp/xpCb44VghhR8RNB73CSxKoKstG4i+a+AStrYV2uQ==;EndpointSuffix=core.windows.net";
+        String storageConnectionAzure = blobstorageconnection;
         String nameContainer = "contenedor1";
 
         try {
