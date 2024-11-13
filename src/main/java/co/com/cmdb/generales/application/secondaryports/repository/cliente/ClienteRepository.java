@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.application.secondaryports.repository;
+package co.com.cmdb.generales.application.secondaryports.repository.cliente;
 
 import java.util.UUID;
 

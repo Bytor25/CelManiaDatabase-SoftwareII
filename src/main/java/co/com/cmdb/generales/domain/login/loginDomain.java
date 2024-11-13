@@ -7,16 +7,17 @@ import co.com.cmdb.generales.crosscutting.helpers.NumericHelper;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.Domain;
 
-public class loginDomain extends Domain{
+public class LoginDomain extends Domain{
 	
+
 	private String usuario;
 	private int password;
 	private boolean estado;
 
-	protected loginDomain(final UUID id) {
+	public LoginDomain(UUID id) {
 		super(id);
 	}
-
+	
 	public final String getUsuario() {
 		return usuario;
 	}

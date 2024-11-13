@@ -14,19 +14,14 @@ public interface TipoDocumentoDtoMapper {
 
     TipoDocumentoDtoMapper INSTANCE = Mappers.getMapper(TipoDocumentoDtoMapper.class);
 
-    // Mapeo de TipoDocumentoDTO a TipoDocumentoDomain
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "identificador", target = "identificador")
     @Mapping(source = "nombre", target = "nombre")
     TipoDocumentoDomain toDomain(TipoDocumentoDTO dto);
 
-    // Mapeo de TipoDocumentoDomain a TipoDocumentoDTO
-    @Mapping(source = "id", target = "id")
+    @Mapping(source = "identificador", target = "identificador")
     @Mapping(source = "nombre", target = "nombre")
     TipoDocumentoDTO toDto(TipoDocumentoDomain domain);
 
-    // Mapeo de una lista de TipoDocumentoDomain a una lista de TipoDocumentoDTO
     List<TipoDocumentoDTO> toDtoCollection(List<TipoDocumentoDomain> domains);
 
-    // Mapeo de una lista de TipoDocumentoDTO a una lista de TipoDocumentoDomain
-    List<TipoDocumentoDomain> toDomainCollection(List<TipoDocumentoDTO> dtos);
 }

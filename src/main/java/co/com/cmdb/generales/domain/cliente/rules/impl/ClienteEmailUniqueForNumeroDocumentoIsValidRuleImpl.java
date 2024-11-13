@@ -3,7 +3,7 @@ package co.com.cmdb.generales.domain.cliente.rules.impl;
 import org.springframework.stereotype.Service;
 
 import co.com.cmdb.generales.application.secondaryports.entity.ClienteEntity;
-import co.com.cmdb.generales.application.secondaryports.repository.ClienteRepository;
+import co.com.cmdb.generales.application.secondaryports.repository.cliente.ClienteRepository;
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 import co.com.cmdb.generales.domain.cliente.exceptions.ClienteEmailUniqueForNumeroDocumentoIsNotValidException;
 import co.com.cmdb.generales.domain.cliente.rules.ClienteEmailUniqueForNumeroDocumentoIsValidRule;
@@ -22,21 +22,16 @@ public class ClienteEmailUniqueForNumeroDocumentoIsValidRuleImpl implements Clie
 
 		var clienteEntity = ClienteEntity.create().setCorreo(data.getCorreo());
 		
-
 		var resultado = clienteRepository.selectByFilter(clienteEntity);
 		
-
-		boolean correoAsociadoAlMismoDocumento = resultado.stream()
+		boolean correoYaRegistradoConOtroDocumento = resultado.stream()
 				.anyMatch(cliente -> 
 					cliente.getCorreo().equals(data.getCorreo()) &&
-					cliente.getNumeroDocumento() == data.getNumeroDocumento() &&
-					cliente.getTipoDocumento().getId() == data.getTipoDocumento().getId()
+					(!cliente.getNumeroDocumento().equals(data.getNumeroDocumento()))
 				);
 		
-
-		if (!correoAsociadoAlMismoDocumento && !resultado.isEmpty()) {
+		if (correoYaRegistradoConOtroDocumento) {
 			throw ClienteEmailUniqueForNumeroDocumentoIsNotValidException.create();
 		}
 	}
-
 }

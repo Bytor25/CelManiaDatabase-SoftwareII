@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.application.secondaryports.repository;
+package co.com.cmdb.generales.application.secondaryports.repository.cliente;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class ClienteRepositoryImpl implements ClienteRepositoryCustom {
 					
 				}
 				
-				if(!ObjectHelper.isNull(filter.getTipoDocumento()) && !NumericHelper.isNull(filter.getTipoDocumento().getId())) {
+				if(!ObjectHelper.isNull(filter.getTipoDocumento()) && !NumericHelper.isNull(filter.getTipoDocumento().getIdentificador())) {
 					predicates.add(criteriaBuilder.equal(result.get("tipo_documento"), filter.getTipoDocumento()));
 					
 				}

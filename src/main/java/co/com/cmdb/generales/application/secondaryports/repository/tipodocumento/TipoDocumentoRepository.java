@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.application.secondaryports.repository;
+package co.com.cmdb.generales.application.secondaryports.repository.tipodocumento;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

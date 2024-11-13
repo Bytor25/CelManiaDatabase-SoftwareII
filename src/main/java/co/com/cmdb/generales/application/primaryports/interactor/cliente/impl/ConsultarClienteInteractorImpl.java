@@ -24,13 +24,16 @@ public class ConsultarClienteInteractorImpl implements ConsultarClienteInteracto
 	
 	@Override
 	public List<ClienteDTO> execute(ClienteDTO data) {
+		
 		try {
 			var clienteDomain = ClienteDtoMapper.INSTANCE.toDomain(data);
 			
 			var resultado = consultarClienteUseCase.execute(clienteDomain);
 			
 			return ClienteDtoMapper.INSTANCE.toDtoCollection(resultado);
+			
 		}catch(CmdbException exception) {
+			
 			var userMessage = "Se ha presentado un problema al consultar la informacion de los clientes";
 			throw DataCmdbException.create(userMessage);
 		}
