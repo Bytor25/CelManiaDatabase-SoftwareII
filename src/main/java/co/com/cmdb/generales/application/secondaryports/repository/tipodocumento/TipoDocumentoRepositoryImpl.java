@@ -39,7 +39,9 @@ public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepositoryCusto
 					
 				}
 				
-				if(!TextHelper.isEmptyApplyingTrim(filter.getNombre())) {
+
+				if(!TextHelper.isEmpty(filter.getNombre())) {
+
 					predicates.add(criteriaBuilder.equal(result.get("nombre"), filter.getNombre()));
 				
 				}
