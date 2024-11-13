@@ -11,19 +11,20 @@ import co.com.cmdb.generales.application.primaryports.interactor.tipodocumento.T
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.infrastructure.primaryadapters.controller.response.TipoDocumentoResponse;
 
-@RestController  
+
+@RestController 
+
 @RequestMapping("/generales/api/v1/tiposdocumento")
 public class TipoDocumentoController {
 
     private final TipoDocumentoInteractor tipoDocumentoInteractor;
 
-    // Inyección de dependencias a través del constructor
     public TipoDocumentoController(TipoDocumentoInteractor tipoDocumentoInteractor) {
         this.tipoDocumentoInteractor = tipoDocumentoInteractor;
     }
 
     @GetMapping
-    public ResponseEntity<TipoDocumentoResponse> consultar() {
+    public ResponseEntity<TipoDocumentoResponse> consultarTipoDocumento() {
 
         var httpStatusCode = HttpStatus.ACCEPTED;
         var tipoDocumentoResponse = new TipoDocumentoResponse();
@@ -32,6 +33,8 @@ public class TipoDocumentoController {
             var tipoDocumentoDto = TipoDocumentoDTO.create();
 
             tipoDocumentoResponse.setDatos(tipoDocumentoInteractor.execute(tipoDocumentoDto));
+            System.out.println("TipoDocumentoController:" + tipoDocumentoResponse.getDatos());
+            
             tipoDocumentoResponse.getMensajes().add("Tipos de documento consultados de manera exitosa");
 
         } catch (CmdbException exception) {
@@ -43,7 +46,7 @@ public class TipoDocumentoController {
         } catch (Exception exception) {
 
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var userMessage = "Error al consultar los estados...";
+            var userMessage = "Error al consultar los tipos de documento...";
             tipoDocumentoResponse.getMensajes().add(userMessage);
             exception.printStackTrace();
 

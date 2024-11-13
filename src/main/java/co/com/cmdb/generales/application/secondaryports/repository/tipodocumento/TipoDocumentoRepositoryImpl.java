@@ -1,4 +1,4 @@
-package co.com.cmdb.generales.application.secondaryports.repository;
+package co.com.cmdb.generales.application.secondaryports.repository.tipodocumento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +30,18 @@ public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepositoryCusto
 			var query = criteriaBuilder.createQuery(TipoDocumentoEntity.class);
 			var result = query.from(TipoDocumentoEntity.class);
 		
-			var predicates = new ArrayList<>();
+			var predicates = new ArrayList<Predicate>();
 			
 			if(!ObjectHelper.isNull(filter)) {
 				
-				if(!NumericHelper.isNull(filter.getId())) {
-					predicates.add(criteriaBuilder.equal(result.get("identificador"), filter.getId()));
+				if(!NumericHelper.isNullOrEmpty(filter.getIdentificador())) {
+					predicates.add(criteriaBuilder.equal(result.get("identificador"), filter.getIdentificador()));
 					
 				}
 				
+
 				if(!TextHelper.isEmpty(filter.getNombre())) {
+
 					predicates.add(criteriaBuilder.equal(result.get("nombre"), filter.getNombre()));
 				
 				}
@@ -47,7 +49,11 @@ public class TipoDocumentoRepositoryImpl implements TipoDocumentoRepositoryCusto
 			}
 			
 		query.select(result).where(criteriaBuilder.and(predicates.toArray(new Predicate[0])));	
+		
+		
 		return entityManager.createQuery(query).getResultList();
+		
+		
 			
 			
 		} catch (final Exception exception) {

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import co.com.cmdb.generales.application.secondaryports.entity.ClienteEntity;
 import co.com.cmdb.generales.application.secondaryports.mapper.TipoDocumentoEntityMapper;
-import co.com.cmdb.generales.application.secondaryports.repository.ClienteRepository;
+import co.com.cmdb.generales.application.secondaryports.repository.cliente.ClienteRepository;
 import co.com.cmdb.generales.application.secondaryports.service.keyvault.VaultService;
 import co.com.cmdb.generales.application.secondaryports.service.notification.NotificationService;
 import co.com.cmdb.generales.application.secondaryports.vo.Email;

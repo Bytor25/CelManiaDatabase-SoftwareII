@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import co.com.cmdb.generales.application.secondaryports.entity.ClienteEntity;
 import co.com.cmdb.generales.application.secondaryports.mapper.TipoDocumentoEntityMapper;
-import co.com.cmdb.generales.application.secondaryports.repository.ClienteRepository;
+import co.com.cmdb.generales.application.secondaryports.repository.cliente.ClienteRepository;
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 import co.com.cmdb.generales.domain.cliente.exceptions.ClienteTipoDocumentoYNumeroDocumentoIsNotUniqueException;
 import co.com.cmdb.generales.domain.cliente.rules.ClienteTipoDocumentoYNumeroDocumentoIsUniqueRule;
@@ -28,8 +28,8 @@ public class ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl implements Cli
 
 		boolean existeClienteConMismaCombinacion = resultado.stream()
 				.anyMatch(cliente -> 
-					cliente.getNumeroDocumento() == data.getNumeroDocumento() && 
-					cliente.getTipoDocumento().getId() == data.getTipoDocumento().getId()
+				cliente.getNumeroDocumento().equals(data.getNumeroDocumento()) &&
+				cliente.getTipoDocumento().getIdentificador() == data.getTipoDocumento().getIdentificador()
 				);
 
 		if (existeClienteConMismaCombinacion) {

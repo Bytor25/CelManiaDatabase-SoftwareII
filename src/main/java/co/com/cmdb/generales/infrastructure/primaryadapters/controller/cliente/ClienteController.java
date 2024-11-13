@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.cmdb.generales.application.primaryports.dto.ClienteDTO;
-import co.com.cmdb.generales.application.primaryports.dto.TipoDocumentoDTO;
 import co.com.cmdb.generales.application.primaryports.interactor.cliente.ConsultarClienteInteractor;
 import co.com.cmdb.generales.application.primaryports.interactor.cliente.RegistrarClienteInteractor;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
@@ -33,7 +32,6 @@ public class ClienteController {
 		
 	}
 	
-	TipoDocumentoDTO tipoDocumento = TipoDocumentoDTO.create(1, "Cédula de Ciudadanía");
 	
 	@GetMapping
 	public ResponseEntity<ClienteResponse> consultarCliente() {

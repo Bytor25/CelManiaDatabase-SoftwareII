@@ -33,7 +33,10 @@ public class TipoDocumentoInteractorImpl implements TipoDocumentoInteractor{
 		try {
 			
 			var tipoDocumentoDomain = TipoDocumentoDtoMapper.INSTANCE.toDomain(data);
+			
 			var resultado = tipoDocumentoUseCase.execute(tipoDocumentoDomain);
+			
+			
 			return TipoDocumentoDtoMapper.INSTANCE.toDtoCollection(resultado);
 			
 		} catch (CmdbException exception) {
