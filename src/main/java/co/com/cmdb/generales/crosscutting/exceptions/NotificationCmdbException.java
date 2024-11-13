@@ -8,7 +8,7 @@ public class NotificationCmdbException extends CmdbException {
 
 	public NotificationCmdbException( final String userMessage, final String technicalMessage,
 			final Exception rootException) {
-		super( userMessage, technicalMessage, Layer.NOTIFICATION,rootException);
+		super( userMessage, technicalMessage, Layer.INTERACTOR,rootException);
 	}
 	
 	public static final NotificationCmdbException create( final String userMessage,final String technicalMessage, final Exception rootException) {

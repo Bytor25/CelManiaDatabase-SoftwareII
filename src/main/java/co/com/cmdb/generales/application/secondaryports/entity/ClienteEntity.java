@@ -2,6 +2,7 @@ package co.com.cmdb.generales.application.secondaryports.entity;
 
 import java.util.UUID;
 
+import co.com.cmdb.generales.crosscutting.helpers.BooleanHelper;
 import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
@@ -16,19 +17,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "clientes")
 public class ClienteEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(name = "identificador")
 	private UUID id;
 	
 	@ManyToOne
-	@JoinColumn(name = "tipoDocumento") 
+	@JoinColumn(name = "tipo_documento") 
 	private TipoDocumentoEntity tipoDocumento;
 	
-	@Column(name = "numeroDocumento")
+	@Column(name = "numero_documento")
 	private String numeroDocumento;
 	
 	@Column(name = "nombre")
@@ -43,8 +44,8 @@ public class ClienteEntity {
 	@Column(name = "telefono")
 	private Long telefono;
 	
-//	@Column(name = "estado")
-//	private boolean estado;
+	@Column(name = "estado")
+	private boolean estado;
 	
 	ClienteEntity() {
 		
@@ -55,10 +56,12 @@ public class ClienteEntity {
 		setApellidos(TextHelper.EMPTY);
 		setCorreo(TextHelper.EMPTY);
 		setTelefono(LongHelper.DEFAULT_LONG);
+		setEstado(BooleanHelper.DEFAULT_BOOLEAN);
 		
 	}
 	
-	public ClienteEntity(final UUID id, final TipoDocumentoEntity tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono) {
+
+	public ClienteEntity(final UUID id, final TipoDocumentoEntity tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono, final boolean estado) {
 		
 		setId(id);
 		setTipoDocumento(tipoDocumento);
@@ -67,6 +70,7 @@ public class ClienteEntity {
 		setApellidos(apellidos);
 		setCorreo(correo);
 		setTelefono(telefono);
+		setEstado(estado);
 		
 	}
 	
@@ -78,13 +82,13 @@ public class ClienteEntity {
 	
 	public static final ClienteEntity create(final UUID id) {
 		
-		return new ClienteEntity(id, TipoDocumentoEntity.create(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, LongHelper.DEFAULT_LONG);
+		return new ClienteEntity(id, TipoDocumentoEntity.create(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, LongHelper.DEFAULT_LONG, BooleanHelper.DEFAULT_BOOLEAN);
 		
 	}
 	
-	public static final ClienteEntity create(final UUID id, final TipoDocumentoEntity tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono) {
+	public static final ClienteEntity create(final UUID id, final TipoDocumentoEntity tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos, final String correo, final Long telefono, final boolean estado) {
 		
-		return new ClienteEntity(id, tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono);
+		return new ClienteEntity(id, tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono, estado);
 		
 	}
 	
@@ -151,6 +155,14 @@ public class ClienteEntity {
 	public ClienteEntity setTelefono(Long telefono) {
 		this.telefono = LongHelper.getDefaultValue(telefono);
 		return this;
+	}
+	
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = BooleanHelper.DEFAULT_BOOLEAN;
 	}
 
 }
