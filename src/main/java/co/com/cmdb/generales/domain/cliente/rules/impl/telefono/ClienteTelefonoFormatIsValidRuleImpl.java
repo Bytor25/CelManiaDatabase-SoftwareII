@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 import co.com.cmdb.generales.domain.cliente.exceptions.telefono.ClienteTelefonoFormatIsNotValidException;
 import co.com.cmdb.generales.domain.cliente.rules.telefono.ClienteTelefonoFormatIsValidRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteTelefonoFormatIsValidRuleImpl implements ClienteTelefonoFormatIsValidRule{

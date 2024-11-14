@@ -7,7 +7,7 @@ import co.com.cmdb.generales.crosscutting.helpers.NumericHelper;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.domain.cliente.exceptions.tipodocumento.ClienteTipoDocumentoIdIsEmptyException;
 import co.com.cmdb.generales.domain.cliente.rules.tipodocumento.ClienteTipoDocumentoIdIsNotEmptyRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteTipoDocumentoIdIsNotEmptyRuleImpl implements ClienteTipoDocumentoIdIsNotEmptyRule{
