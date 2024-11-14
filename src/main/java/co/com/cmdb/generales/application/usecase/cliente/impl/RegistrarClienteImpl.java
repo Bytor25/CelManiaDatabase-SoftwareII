@@ -13,22 +13,27 @@ import co.com.cmdb.generales.crosscutting.exceptions.UseCaseCmdbException;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.crosscutting.helpers.UUIDHelper;
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public class RegistrarClienteImpl implements RegistrarCliente {
 	
 	private ClienteRepository clienteRepository;
 	private RegistrarClienteRuleValidator registrarClienteRuleValidator;
+	private MessageCatalogService messageCatalogService;
 	
-	public RegistrarClienteImpl(final ClienteRepository clienteRepository, final RegistrarClienteRuleValidator registrarClienteRuleValidator) {
+	public RegistrarClienteImpl(final ClienteRepository clienteRepository, final RegistrarClienteRuleValidator registrarClienteRuleValidator, final MessageCatalogService messageCatalogService) {
+		
+		
 		
 		if (ObjectHelper.isNull(clienteRepository) || ObjectHelper.isNull(registrarClienteRuleValidator)) {
-			var userMessage = "No se pudo completar el registro de la ciudad. Por favor, intente nuevamente más tarde.";
-			var technicalMessage = "Los servicios requeridos para registrar una ciudad no fueron proporcionados correctamente. Verifique que los parámetros cityRepository y registerNewCityRulesValidator no sean null.";
+			var userMessage = messageCatalogService.getMessage("errorRegistroCliente");
+			var technicalMessage = messageCatalogService.getMessage("errorServiciosRegistarCt");
 			throw new UseCaseCmdbException(userMessage, technicalMessage, new Exception());
 		}
 		this.clienteRepository = clienteRepository;
 		this.registrarClienteRuleValidator = registrarClienteRuleValidator;
+		this.messageCatalogService = messageCatalogService;
 		
 	}
 	

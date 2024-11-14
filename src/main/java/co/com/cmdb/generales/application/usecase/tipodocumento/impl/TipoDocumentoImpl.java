@@ -10,22 +10,25 @@ import co.com.cmdb.generales.application.usecase.tipodocumento.TipoDocumento;
 import co.com.cmdb.generales.crosscutting.exceptions.DataCmdbException;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.domain.tipoDocumento.TipoDocumentoDomain;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 @Service
 public class TipoDocumentoImpl implements TipoDocumento{
 	
 	private TipoDocumentoRepository tipoDocumentoRepository;
+	private MessageCatalogService messageCatalogService;
 	
-	public TipoDocumentoImpl(TipoDocumentoRepository tipoDocumentoRepository) {
+	public TipoDocumentoImpl(TipoDocumentoRepository tipoDocumentoRepository, final MessageCatalogService messageCatalogService) {
 		
 		if(ObjectHelper.isNull(tipoDocumentoRepository)) {
 			
-			var userMessage = "Hubo un error a la hora de consultar los tipos de documento";
+			var userMessage = messageCatalogService.getMessage("errorConsultaTD");
 			throw DataCmdbException.create(userMessage);
 		
 		}
 		
 		this.tipoDocumentoRepository = tipoDocumentoRepository;
+		this.messageCatalogService = messageCatalogService;
 		
 	}
 

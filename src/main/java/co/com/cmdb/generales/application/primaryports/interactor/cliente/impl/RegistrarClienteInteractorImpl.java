@@ -8,17 +8,20 @@ import co.com.cmdb.generales.application.primaryports.mapper.ClienteDtoMapper;
 import co.com.cmdb.generales.application.usecase.cliente.RegistrarCliente;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.crosscutting.exceptions.InteractorCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 public class RegistrarClienteInteractorImpl implements RegistrarClienteInteractor {
 	
-	private RegistrarCliente registrarNuevoClienteUseCase; 
+	private RegistrarCliente registrarNuevoClienteUseCase;
+	private MessageCatalogService messageCatalogService;
 	
-	public RegistrarClienteInteractorImpl(final RegistrarCliente regregistrarNuevoClienteUseCase) {
+	public RegistrarClienteInteractorImpl(final RegistrarCliente regregistrarNuevoClienteUseCase, final MessageCatalogService messageCatalogService) {
 		
 		this.registrarNuevoClienteUseCase = regregistrarNuevoClienteUseCase;
+		this.messageCatalogService = messageCatalogService;
 		
 	}
 	
@@ -33,8 +36,8 @@ public class RegistrarClienteInteractorImpl implements RegistrarClienteInteracto
 		}catch (CmdbException exception) {
 			throw exception;
 		}catch (Exception exception) {
-			var userMessage = "Se ha presentado un problema al llevar a cabo el registro del cliente. Si el problema persiste, contacte al administrador";
-			var technicalMessage = "Se ha presentado un error registrando el cliente en la capa del interactor, por favor revise la rama base del problema";
+			var userMessage = messageCatalogService.getMessage("ProblemaRegistro");
+			var technicalMessage = messageCatalogService.getMessage("errorRegistroClienteInteractor");
 			throw new InteractorCmdbException(userMessage, technicalMessage, exception);
 		}
 		

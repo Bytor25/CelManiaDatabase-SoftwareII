@@ -15,7 +15,7 @@ public class ClienteNumeroDocumentoDoesNotExistExecption extends RuleCmdbExcepti
 	}
 	
 	public static final ClienteNumeroDocumentoDoesNotExistExecption create() {
-		var userMessage = "El número de documento del cliente no existe. Por favor, verifique que ha ingresado un número de documento válido y vuelva a intentarlo.";
+		var userMessage = "ClienteNumeroDocumentoDoesNotExistExecption";
 		return new ClienteNumeroDocumentoDoesNotExistExecption(userMessage, userMessage, new Exception());
 	}
 
