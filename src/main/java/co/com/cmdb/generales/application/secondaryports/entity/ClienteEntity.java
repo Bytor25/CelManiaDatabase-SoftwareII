@@ -161,8 +161,9 @@ public class ClienteEntity {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public ClienteEntity setEstado(boolean estado) {
 		this.estado = BooleanHelper.getDefaultValue(estado);
+		return this;
 	}
 
 }

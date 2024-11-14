@@ -13,19 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>CMDB</name>
     <description>Demo project for Spring Boot</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>23</java.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
@@ -33,7 +20,7 @@
     
     <dependencies>
 
-        <!-- MapStruct dependencies -->
+        <!-- Dependencias MapStruct -->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -46,51 +33,68 @@
             <version>1.5.5.Final</version>
             <scope>provided</scope>
         </dependency>
-        
-        <!-- Blob storage -->
-        
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.18.34</version>
-		    <scope>provided</scope>
-		</dependency>
-	
-		<dependency>
-		    <groupId>com.azure</groupId>
-		    <artifactId>azure-storage-blob</artifactId>
-		    <version>12.28.1</version>
-		</dependency>
 
-        <!-- Azure Key Vault -->
+        <!-- Dependencias JSON Web Token (JWT) -->
+        
+<!--		 <dependency>-->
+<!--		  <groupId>io.jsonwebtoken</groupId>-->
+<!--		  <artifactId>jjwt-api</artifactId>-->
+<!--		  <version>0.11.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--		  <groupId>io.jsonwebtoken</groupId>-->
+<!--		  <artifactId>jjwt-impl</artifactId>-->
+<!--		  <version>0.11.2</version>-->
+<!--		  <scope>runtime</scope>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--		  <groupId>io.jsonwebtoken</groupId>-->
+<!--		  <artifactId>jjwt-jackson</artifactId>-->
+<!--		  <version>0.11.2</version>-->
+<!--		  <scope>runtime</scope>-->
+<!--		</dependency>-->
+
+
+        <!-- Dependencias de Blob Storage y Key Vault -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+    
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>12.28.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.azure.spring</groupId>
             <artifactId>spring-cloud-azure-starter-keyvault</artifactId>
-     	</dependency>
+        </dependency>
         
-        <!-- Notificaciones por correo -->
+        <!-- Notificaciones por correo y otros servicios -->
         <dependency>
-        	<groupId>org.springframework.cloud</groupId>
-        	<artifactId>spring-cloud-starter-aws</artifactId>
-        	<version>2.2.6.RELEASE</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws</artifactId>
+            <version>2.2.6.RELEASE</version>
         </dependency>
         
         <dependency>
-        	<groupId>org.springframework.cloud</groupId>
-        	<artifactId>spring-cloud-starter-aws-messaging</artifactId>
-        	<version>2.2.6.RELEASE</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws-messaging</artifactId>
+            <version>2.2.6.RELEASE</version>
         </dependency>
         
-        <!-- S3 Backup -->
-        
+        <!-- Dependencias de S3 Backup, Redis y Seguridad -->
         <dependency>
-    		<groupId>org.projectlombok</groupId>
-    		<artifactId>lombok</artifactId>
-    		<version>1.18.28</version>
-    		<scope>provided</scope>
-		</dependency>
-		
-        <!-- Redis -->
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.28</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -100,20 +104,33 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Base de datos -->
+        <!-- Base de datos y Seguridad -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -129,18 +146,17 @@
             </dependency>
             
             <dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
-            <!-- Plugin para compilar el proyecto con MapStruct -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -158,17 +174,16 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin para Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                	<excludes>
-                		<exclude>
-                			<groupId>org.projectlombok</groupId>
-                			<artifactId>lombok</artifactId>
-                		</exclude>
-                	</excludes>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>

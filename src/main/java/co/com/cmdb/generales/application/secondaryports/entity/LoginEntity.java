@@ -32,6 +32,7 @@ public class LoginEntity {
 	private boolean estado;
 	
 	public LoginEntity(){
+		
 		setId(UUIDHelper.getDefault());
 		setUsuario(TextHelper.EMPTY);
 		setPassword(NumericHelper.DEFAULT_INT);
@@ -67,32 +68,36 @@ public class LoginEntity {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public LoginEntity setId(UUID id) {
 		this.id = UUIDHelper.getDefault();
+		return this;
 	}
 
 	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public LoginEntity setUsuario(String usuario) {
 		this.usuario = TextHelper.applyTrim(usuario);
+		return this;
 	}
 
 	public int getPassword() {
 		return password;
 	}
 
-	public void setPassword(int password) {
+	public LoginEntity setPassword(int password) {
 		this.password = NumericHelper.getDefaultValue(password);
+		return this;
 	}
 
 	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public LoginEntity setEstado(boolean estado) {
 		this.estado = BooleanHelper.getDefaultValue(estado);
+		return this;
 	}
 	
 	

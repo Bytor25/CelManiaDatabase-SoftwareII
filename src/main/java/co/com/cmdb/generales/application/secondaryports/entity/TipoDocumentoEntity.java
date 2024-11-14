@@ -54,16 +54,18 @@ public class TipoDocumentoEntity {
 		return identificador;
 	}
 
-	public void setIdentificador(final int identificador) {
+	public TipoDocumentoEntity setIdentificador(final int identificador) {
 		this.identificador = NumericHelper.getDefaultValue(identificador);
+		return this;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public TipoDocumentoEntity setNombre(String nombre) {
 		this.nombre = TextHelper.getDefault(nombre, TextHelper.EMPTY);
+		return this;
 	}
 	
 	

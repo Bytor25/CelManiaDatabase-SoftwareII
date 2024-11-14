@@ -33,7 +33,6 @@ import co.com.cmdb.generales.domain.cliente.rules.telefono.ClienteTelefonoFormat
 import co.com.cmdb.generales.domain.cliente.rules.telefono.ClienteTelefonoIsNotEmptyRule;
 import co.com.cmdb.generales.domain.cliente.rules.telefono.ClienteTelefonoRangeIsValidRule;
 import co.com.cmdb.generales.domain.cliente.rules.tipodocumento.ClienteTipoDocumentoDoesExistRule;
-import co.com.cmdb.generales.domain.cliente.rules.tipodocumento.ClienteTipoDocumentoDoesNotExistRule;
 import co.com.cmdb.generales.domain.cliente.rules.tipodocumento.ClienteTipoDocumentoIdIsNotEmptyRule;
 import co.com.cmdb.generales.domain.tipoDocumento.TipoDocumentoDomain;
 
@@ -93,8 +92,7 @@ public final class RegistrarClienteValidatorImpl implements RegistrarClienteRule
 	
 	@Autowired
 	private ClienteTipoDocumentoDoesExistRule clienteTipoDocumentoDoesExist;
-	@Autowired
-	private ClienteTipoDocumentoDoesNotExistRule clienteTipoDocumentoDoesNotExist;
+
 	@Autowired
 	private ClienteTipoDocumentoIdIsNotEmptyRule clienteTipoDocumentoIdIsNotEmpty;
 	
@@ -167,7 +165,6 @@ public final class RegistrarClienteValidatorImpl implements RegistrarClienteRule
 	
 	private void validateRulesRelatedWithTipoDocumento(final TipoDocumentoDomain tipoDocumentoDomain) {
 		clienteTipoDocumentoDoesExist.execute(tipoDocumentoDomain);
-		clienteTipoDocumentoDoesNotExist.execute(tipoDocumentoDomain);
 		clienteTipoDocumentoIdIsNotEmpty.execute(tipoDocumentoDomain.getIdentificador());
 	}
 
