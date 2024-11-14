@@ -23,6 +23,7 @@ public class ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl implements Cli
 		var clienteEntity = ClienteEntity.create()
 				.setNumeroDocumento(data.getNumeroDocumento())
 				.setTipoDocumento(TipoDocumentoEntityMapper.INSTANCE.toEntity(data.getTipoDocumento()));
+		
 
 		var resultado = clienteRepository.selectByFilter(clienteEntity);
 
@@ -38,3 +39,4 @@ public class ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl implements Cli
 	}
 
 }
+
