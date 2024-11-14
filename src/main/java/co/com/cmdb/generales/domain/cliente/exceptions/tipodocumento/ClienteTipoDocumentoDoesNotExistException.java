@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.tipodocumento;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
 
 public class ClienteTipoDocumentoDoesNotExistException extends RuleCmdbException{
 
@@ -14,8 +15,8 @@ public class ClienteTipoDocumentoDoesNotExistException extends RuleCmdbException
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final ClienteTipoDocumentoDoesNotExistException create() {
-		var userMessage = "El tipo de documento del cliente no existe. Verifique que el tipo de documento ingresado sea válido y esté registrado en el sistema.";
+	public static final ClienteTipoDocumentoDoesNotExistException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("ClienteTipoDocumentoDoesNotExistException");
 		return new ClienteTipoDocumentoDoesNotExistException(userMessage, userMessage, new Exception());
 	}
 
