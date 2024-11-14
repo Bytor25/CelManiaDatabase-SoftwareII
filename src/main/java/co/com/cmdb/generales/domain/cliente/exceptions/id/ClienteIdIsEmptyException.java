@@ -1,7 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.id;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 public final class ClienteIdIsEmptyException extends RuleCmdbException  {
 

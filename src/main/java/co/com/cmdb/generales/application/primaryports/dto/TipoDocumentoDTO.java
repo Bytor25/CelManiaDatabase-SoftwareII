@@ -5,26 +5,26 @@ import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
 
 public class TipoDocumentoDTO {
 	
-	private int id;
+	private int identificador;
 	private String nombre;
 	
 	public TipoDocumentoDTO() {
 		
-		setId(NumericHelper.DEFAULT_INT);
+		setIdentificador(NumericHelper.DEFAULT_INT);
 		setNombre(TextHelper.EMPTY);
 		
 	}
 	
-	public TipoDocumentoDTO(final int id, final String nombre) {
+	public TipoDocumentoDTO(final int identificador, final String nombre) {
 		
-		setId(id);
+		setIdentificador(identificador);
 		setNombre(nombre);
 		
 	}
 	
-	public static final TipoDocumentoDTO create(final int id, final String nombre) {
+	public static final TipoDocumentoDTO create(final int identificador, final String nombre) {
 		
-		return new TipoDocumentoDTO(id, nombre);
+		return new TipoDocumentoDTO(identificador, nombre);
 		
 	}
 	
@@ -34,12 +34,12 @@ public class TipoDocumentoDTO {
 		
 	}
 	
-	public int getId() {
-		return id;
+	public int getIdentificador() {
+		return identificador;
 	}
 	
-	public void setId(int id) {
-		this.id = NumericHelper.getDefaultValue(id);
+	public void setIdentificador(int identificador) {
+		this.identificador = NumericHelper.getDefaultValue(identificador);
 	}
 	
 	public String getNombre() {

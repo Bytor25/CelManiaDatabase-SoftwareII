@@ -1,7 +1,7 @@
 package co.com.cmdb.generales.domain.cliente.exceptions.name;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 public class ClienteNameIsEmptyException extends RuleCmdbException{
 
@@ -9,7 +9,6 @@ public class ClienteNameIsEmptyException extends RuleCmdbException{
 
 	public ClienteNameIsEmptyException(String technicalMessage, String userMessage, Exception rootException) {
 		super(technicalMessage, userMessage, rootException);
-		// TODO Auto-generated constructor stub
 	}
 
 	public static final ClienteNameIsEmptyException create(MessageCatalogService messageCatalogService) {

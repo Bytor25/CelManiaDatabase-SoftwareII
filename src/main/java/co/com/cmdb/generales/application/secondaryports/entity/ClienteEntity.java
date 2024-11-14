@@ -47,7 +47,7 @@ public class ClienteEntity {
 	@Column(name = "estado")
 	private boolean estado;
 	
-	ClienteEntity() {
+	public ClienteEntity() {
 		
 		setId(UUIDHelper.getDefault());
 		setTipoDocumento(TipoDocumentoEntity.create());
@@ -162,7 +162,7 @@ public class ClienteEntity {
 	}
 
 	public void setEstado(boolean estado) {
-		this.estado = BooleanHelper.DEFAULT_BOOLEAN;
+		this.estado = BooleanHelper.getDefaultValue(estado);
 	}
 
 }

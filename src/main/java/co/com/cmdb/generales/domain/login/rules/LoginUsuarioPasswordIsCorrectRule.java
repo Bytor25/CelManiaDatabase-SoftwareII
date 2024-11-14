@@ -1,8 +1,8 @@
 package co.com.cmdb.generales.domain.login.rules;
 
 import co.com.cmdb.generales.domain.DomainRule;
-import co.com.cmdb.generales.domain.login.loginDomain;
+import co.com.cmdb.generales.domain.login.LoginDomain;
 
-public interface LoginUsuarioPasswordIsCorrectRule extends DomainRule<loginDomain>{
+public interface LoginUsuarioPasswordIsCorrectRule extends DomainRule<LoginDomain>{
 
 }

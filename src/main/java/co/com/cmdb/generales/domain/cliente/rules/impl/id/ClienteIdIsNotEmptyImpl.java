@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.domain.cliente.exceptions.id.ClienteIdIsEmptyException;
 import co.com.cmdb.generales.domain.cliente.rules.id.ClienteIdIsNotEmptyRule;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
-
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteIdIsNotEmptyImpl implements ClienteIdIsNotEmptyRule{

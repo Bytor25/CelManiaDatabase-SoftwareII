@@ -8,7 +8,7 @@ import co.com.cmdb.generales.application.primaryports.mapper.ClienteDtoMapper;
 import co.com.cmdb.generales.application.usecase.cliente.RegistrarCliente;
 import co.com.cmdb.generales.crosscutting.exceptions.CmdbException;
 import co.com.cmdb.generales.crosscutting.exceptions.InteractorCmdbException;
-import co.com.cmdb.generales.infrastructure.secondaryadapters.redis.MessageCatalogService;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 import jakarta.transaction.Transactional;
 
 @Service

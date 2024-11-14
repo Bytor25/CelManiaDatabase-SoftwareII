@@ -1,5 +1,6 @@
 package co.com.cmdb.generales.application.primaryports.dto;
 
+import co.com.cmdb.generales.crosscutting.helpers.BooleanHelper;
 import co.com.cmdb.generales.crosscutting.helpers.LongHelper;
 import co.com.cmdb.generales.crosscutting.helpers.ObjectHelper;
 import co.com.cmdb.generales.crosscutting.helpers.TextHelper;
@@ -12,6 +13,7 @@ public class ClienteDTO {
 	private String apellidos;
 	private String correo;
 	private long telefono;
+	private boolean estado;
 	
 	public ClienteDTO() {
 		
@@ -21,11 +23,12 @@ public class ClienteDTO {
 		setApellidos(TextHelper.EMPTY);
 		setCorreo(TextHelper.EMPTY);
 		setTelefono(LongHelper.DEFAULT_LONG);
+		setEstado(BooleanHelper.DEFAULT_BOOLEAN);
 		
 	}
 	
 	public ClienteDTO(final TipoDocumentoDTO tipoDocumento, final String numeroDocumento , final String nombre, final String apellidos,
-			final String correo, final long telefono) {
+			final String correo, final long telefono, final boolean estado) {
 		
 		setTipoDocumento(tipoDocumento);
 		setNumeroDocumento(numeroDocumento);
@@ -33,13 +36,14 @@ public class ClienteDTO {
 		setApellidos(apellidos);
 		setCorreo(correo);
 		setTelefono(telefono);
+		setEstado(estado);
 		
 	}
 	
 	public static final ClienteDTO create(final TipoDocumentoDTO tipoDocumento, final String numeroDocumento, final String nombre, final String apellidos,
-			final String correo, final long telefono) {
+			final String correo, final long telefono, final boolean estado) {
 		
-		return new ClienteDTO(tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono);
+		return new ClienteDTO(tipoDocumento, numeroDocumento, nombre, apellidos, correo, telefono, estado);
 		
 	}
 	
@@ -96,5 +100,15 @@ public class ClienteDTO {
 	public void setTelefono(long telefono) {
 		this.telefono = LongHelper.getDefaultValue(telefono);
 	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = BooleanHelper.getDefaultValue(estado);
+	}
+	
+	
 	
 }
