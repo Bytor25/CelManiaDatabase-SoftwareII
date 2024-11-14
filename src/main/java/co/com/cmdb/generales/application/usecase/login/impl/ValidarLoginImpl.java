@@ -2,11 +2,14 @@ package co.com.cmdb.generales.application.usecase.login.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.com.cmdb.generales.application.secondaryports.mapper.LoginEntityMapper;
 import co.com.cmdb.generales.application.secondaryports.repository.login.LoginRepository;
 import co.com.cmdb.generales.application.usecase.login.ValidarLogin;
 import co.com.cmdb.generales.domain.login.LoginDomain;
 
+@Service
 public class ValidarLoginImpl implements ValidarLogin{
 
 	private LoginRepository loginRepository;

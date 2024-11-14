@@ -11,7 +11,7 @@ public final class TextHelper {
     private static final Pattern DOCUMENT_NUMBER_PATTERN = Pattern.compile("^[0-9]+$");
     private static final Pattern ESPACIOS_LETRAS_DIGITOS_PATTERN = Pattern.compile("^[0-9A-Za-záéíóúÁÉÍÓÚ]+$");
     
-    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚ]+$");
+    private static final Pattern ONLY_LETTERS_PATTERN = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚ ]+$");
 
     private TextHelper() {}
 
