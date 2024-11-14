@@ -7,14 +7,17 @@ import co.com.cmdb.generales.application.secondaryports.repository.cliente.Clien
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 import co.com.cmdb.generales.domain.cliente.exceptions.ClienteTelefonoUniqueForNumeroDocumentoIsNotValidException;
 import co.com.cmdb.generales.domain.cliente.rules.ClienteTelefonoUniqueForNumeroDocumentoIsValidRule;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteTelefonoUniqueForNumeroDocumentoIsValidRuleImpl implements ClienteTelefonoUniqueForNumeroDocumentoIsValidRule {
 
 	private ClienteRepository clienteRepository;
+	private MessageCatalogService messageCatalogService;
 	
-	public ClienteTelefonoUniqueForNumeroDocumentoIsValidRuleImpl(ClienteRepository clienteRepository) {
+	public ClienteTelefonoUniqueForNumeroDocumentoIsValidRuleImpl(ClienteRepository clienteRepository, MessageCatalogService messageCatalogService) {
 		this.clienteRepository = clienteRepository;
+		this.messageCatalogService = messageCatalogService;
 	}
 	
 	@Override
@@ -29,7 +32,7 @@ public class ClienteTelefonoUniqueForNumeroDocumentoIsValidRuleImpl implements C
 				);
 
 		if (existeTelefonoRegistradoConOtroDocumento) {
-			throw ClienteTelefonoUniqueForNumeroDocumentoIsNotValidException.create();
+			throw ClienteTelefonoUniqueForNumeroDocumentoIsNotValidException.create(messageCatalogService);
 		}
 	}
 
