@@ -8,13 +8,16 @@ import co.com.cmdb.generales.application.secondaryports.repository.cliente.Clien
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 import co.com.cmdb.generales.domain.cliente.exceptions.ClienteTipoDocumentoYNumeroDocumentoIsNotUniqueException;
 import co.com.cmdb.generales.domain.cliente.rules.ClienteTipoDocumentoYNumeroDocumentoIsUniqueRule;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl implements ClienteTipoDocumentoYNumeroDocumentoIsUniqueRule{
 	private ClienteRepository clienteRepository;
+	private MessageCatalogService messageCatalogService;
 	
-	public ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl(ClienteRepository clienteRepository) {
+	public ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl(ClienteRepository clienteRepository, MessageCatalogService messageCatalogService) {
 		this.clienteRepository = clienteRepository;
+		this.messageCatalogService = messageCatalogService;
 	}
 	
 	@Override
@@ -34,7 +37,7 @@ public class ClienteTipoDocumentoYNumeroDocumentoIsUniqueRuleImpl implements Cli
 				);
 
 		if (existeClienteConMismaCombinacion) {
-			throw ClienteTipoDocumentoYNumeroDocumentoIsNotUniqueException.create();
+			throw ClienteTipoDocumentoYNumeroDocumentoIsNotUniqueException.create(messageCatalogService);
 		}
 	}
 

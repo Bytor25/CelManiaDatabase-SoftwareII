@@ -1,6 +1,7 @@
 package co.com.cmdb.generales.domain.login.exceptions;
 
 import co.com.cmdb.generales.crosscutting.exceptions.RuleCmdbException;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 public class LoginPasswordIsEmptyException extends RuleCmdbException{
 
@@ -11,8 +12,8 @@ public class LoginPasswordIsEmptyException extends RuleCmdbException{
 		super(technicalMessage, userMessage, rootException);
 	}
 	
-	public static final LoginPasswordIsEmptyException create() {
-		var userMessage = "La contraseña está vacía. Por favor, ingrese una contraseña válida.";
+	public static final LoginPasswordIsEmptyException create(MessageCatalogService messageCatalogService) {
+		var userMessage = messageCatalogService.getMessage("LoginPasswordIsEmptyException");
 		return new LoginPasswordIsEmptyException(userMessage, userMessage, new Exception());
 	}
 

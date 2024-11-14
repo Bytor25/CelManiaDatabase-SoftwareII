@@ -7,14 +7,17 @@ import co.com.cmdb.generales.application.secondaryports.repository.cliente.Clien
 import co.com.cmdb.generales.domain.cliente.ClienteDomain;
 import co.com.cmdb.generales.domain.cliente.exceptions.ClienteEmailUniqueForNumeroDocumentoIsNotValidException;
 import co.com.cmdb.generales.domain.cliente.rules.ClienteEmailUniqueForNumeroDocumentoIsValidRule;
+import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.MessageCatalogService;
 
 @Service
 public class ClienteEmailUniqueForNumeroDocumentoIsValidRuleImpl implements ClienteEmailUniqueForNumeroDocumentoIsValidRule {
 	
 	private ClienteRepository clienteRepository;
+	private MessageCatalogService messageCatalogService;
 	
-	public ClienteEmailUniqueForNumeroDocumentoIsValidRuleImpl(ClienteRepository clienteRepository) {
+	public ClienteEmailUniqueForNumeroDocumentoIsValidRuleImpl(ClienteRepository clienteRepository, MessageCatalogService messageCatalogService) {
 		this.clienteRepository = clienteRepository;
+		this.messageCatalogService = messageCatalogService;
 	}
 	
 	@Override
@@ -31,7 +34,7 @@ public class ClienteEmailUniqueForNumeroDocumentoIsValidRuleImpl implements Clie
 				);
 		
 		if (correoYaRegistradoConOtroDocumento) {
-			throw ClienteEmailUniqueForNumeroDocumentoIsNotValidException.create();
+			throw ClienteEmailUniqueForNumeroDocumentoIsNotValidException.create(messageCatalogService);
 		}
 	}
 }

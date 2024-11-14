@@ -13,10 +13,10 @@ import co.com.cmdb.generales.infrastructure.secondaryadapters.service.redis.Mess
 public class ClienteTipoDocumentoDoesExistRuleImpl implements ClienteTipoDocumentoDoesExistRule{
 
 	private TipoDocumentoRepository tipoDocumentoRepository;
-	//private MessageCatalogService messageCatalogService;
+	private MessageCatalogService messageCatalogService;
 	
 	public ClienteTipoDocumentoDoesExistRuleImpl(MessageCatalogService messageCatalogService, TipoDocumentoRepository tipoDocumentoRepository) {
-		//this.messageCatalogService = messageCatalogService;
+		this.messageCatalogService = messageCatalogService;
 		this.tipoDocumentoRepository = tipoDocumentoRepository;
 	}
 	
@@ -28,7 +28,7 @@ public class ClienteTipoDocumentoDoesExistRuleImpl implements ClienteTipoDocumen
 		
 		if(resultado.isEmpty()) {
 			
-			throw ClienteTipoDocumentoDoesExistException.create();
+			throw ClienteTipoDocumentoDoesExistException.create(messageCatalogService);
 			
 		}
 		
